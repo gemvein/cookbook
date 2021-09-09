@@ -13,13 +13,15 @@ require 'rake'
 require 'juwelier'
 Juwelier::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "cookbook"
-  gem.homepage = "http://github.com/nerakdon/cookbook"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "karen.e.lundgren@gmail.com"
-  gem.authors = ["Karen Lundgren"]
+  gem.name = 'cookbook'
+  gem.homepage = 'https://gemvein.com/museum/cases/cookbook'
+  gem.metadata = { source_code_uri: 'http://github.com/gemvein/cookbook' }
+  gem.license = 'MIT'
+  gem.summary = %(Mountable Engine to show instructions with components, like a cookbook or instruction manual)
+  gem.description = 'Cookbook allows you to associate instructions with components in a cross referenced way. '\
+                    'Good for cooking recipes or an instruction manual for DIY projects.'
+  gem.email = 'loren.lundgren@gmail.com'
+  gem.authors = ['Loren Lundgren']
 
   # dependencies defined in Gemfile
 end
