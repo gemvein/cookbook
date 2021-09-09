@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @supply.name
+%p
+  %b Slug:
+  = @supply.slug
+%p
+  %b Description:
+  = @supply.description
+%p
+  %b Source:
+  = @supply.source
+
+= link_to 'Edit', edit_supply_path(@supply)
+\|
+= link_to 'Back', supplies_path

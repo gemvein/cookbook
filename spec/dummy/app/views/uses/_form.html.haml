@@ -1,0 +1,34 @@
+= form_for @use do |f|
+  - if @use.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@use.errors.count, "error")} prohibited this use from being saved:"
+      %ul
+        - @use.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :use_in
+    = f.text_field :use_in
+  .field
+    = f.label :use_of
+    = f.text_field :use_of
+  .field
+    = f.label :quantity_minimum
+    = f.text_field :quantity_minimum
+  .field
+    = f.label :quantity_maximum
+    = f.text_field :quantity_maximum
+  .field
+    = f.label :unit
+    = f.text_field :unit
+  .field
+    = f.label :sort
+    = f.number_field :sort
+  .field
+    = f.label :note
+    = f.text_field :note
+  .field
+    = f.label :preparation
+    = f.text_field :preparation
+  .actions
+    = f.submit 'Save'

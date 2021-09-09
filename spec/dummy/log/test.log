@@ -32,3 +32,206 @@
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (9.8ms)[0m  [1m[31mDELETE FROM "doodads";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'doodads';[0m
+  [1m[35m (4.7ms)[0m  [1m[31mDELETE FROM "ingredients";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ingredients';[0m
+  [1m[35m (5.5ms)[0m  [1m[31mDELETE FROM "recipes";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'recipes';[0m
+  [1m[35m (4.5ms)[0m  [1m[31mDELETE FROM "things";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'things';[0m
+  [1m[35m (5.0ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (5.0ms)[0m  [1m[31mDELETE FROM "uses";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'uses';[0m
+  [1m[35m (7.8ms)[0m  [1m[31mDELETE FROM "works_cited_citations";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'works_cited_citations';[0m
+  [1m[35m (5.2ms)[0m  [1m[31mDELETE FROM "works_cited_contributors";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'works_cited_contributors';[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (7.4ms)[0m  [1m[31mDELETE FROM "how_tos";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'how_tos';[0m
+  [1m[35m (4.9ms)[0m  [1m[31mDELETE FROM "ingredients";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ingredients';[0m
+  [1m[35m (4.9ms)[0m  [1m[31mDELETE FROM "recipes";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'recipes';[0m
+  [1m[35m (12.5ms)[0m  [1m[31mDELETE FROM "supplies";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'supplies';[0m
+  [1m[35m (4.9ms)[0m  [1m[31mDELETE FROM "tools";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'tools';[0m
+  [1m[35m (4.8ms)[0m  [1m[31mDELETE FROM "uses";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'uses';[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  Rendering uses/new.html.haml
+  Rendered uses/_form.html.haml (Duration: 20.7ms | Allocations: 7525)
+  Rendered uses/new.html.haml (Duration: 30.6ms | Allocations: 11751)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mIngredient Create (0.6ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "slug", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["slug", "MyString"], ["description", "MyText"], ["aisle", "MyString"], ["store", "MyString"], ["cost", "MyString"], ["created_at", "2021-09-09 18:40:36.437280"], ["updated_at", "2021-09-09 18:40:36.437280"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering ingredients/edit.html.haml
+  Rendered ingredients/_form.html.haml (Duration: 15.8ms | Allocations: 5506)
+  Rendered ingredients/edit.html.haml (Duration: 21.1ms | Allocations: 6899)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mIngredient Create (0.4ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "slug", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["aisle", "Aisle"], ["store", "Store"], ["cost", "Cost"], ["created_at", "2021-09-09 18:40:36.488664"], ["updated_at", "2021-09-09 18:40:36.488664"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mIngredient Create (0.5ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "slug", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["aisle", "Aisle"], ["store", "Store"], ["cost", "Cost"], ["created_at", "2021-09-09 18:40:36.492013"], ["updated_at", "2021-09-09 18:40:36.492013"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  Rendering ingredients/new.html.haml
+  Rendered ingredients/_form.html.haml (Duration: 5.5ms | Allocations: 1339)
+  Rendered ingredients/new.html.haml (Duration: 9.5ms | Allocations: 2461)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mIngredient Create (0.5ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "slug", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["aisle", "Aisle"], ["store", "Store"], ["cost", "Cost"], ["created_at", "2021-09-09 18:40:36.558837"], ["updated_at", "2021-09-09 18:40:36.558837"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering ingredients/show.html.haml
+  Rendered ingredients/show.html.haml (Duration: 6.8ms | Allocations: 2665)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "slug", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["slug", "MyString"], ["description", "MyText"], ["serves", "MyString"], ["meal", "MyString"], ["instructions", "MyText"], ["created_at", "2021-09-09 18:40:36.623186"], ["updated_at", "2021-09-09 18:40:36.623186"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering recipes/edit.html.haml
+  Rendered recipes/_form.html.haml (Duration: 15.5ms | Allocations: 5525)
+  Rendered recipes/edit.html.haml (Duration: 20.5ms | Allocations: 6916)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "slug", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["serves", "Serves"], ["meal", "Meal"], ["instructions", "MyText"], ["created_at", "2021-09-09 18:40:36.672351"], ["updated_at", "2021-09-09 18:40:36.672351"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.6ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "slug", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["serves", "Serves"], ["meal", "Meal"], ["instructions", "MyText"], ["created_at", "2021-09-09 18:40:36.677136"], ["updated_at", "2021-09-09 18:40:36.677136"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  Rendering recipes/new.html.haml
+  Rendered recipes/_form.html.haml (Duration: 11.0ms | Allocations: 1392)
+  Rendered recipes/new.html.haml (Duration: 15.1ms | Allocations: 2515)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRecipe Create (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "slug", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["serves", "Serves"], ["meal", "Meal"], ["instructions", "MyText"], ["created_at", "2021-09-09 18:40:36.778509"], ["updated_at", "2021-09-09 18:40:36.778509"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering recipes/show.html.haml
+  Rendered recipes/show.html.haml (Duration: 10.6ms | Allocations: 2652)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSupply Create (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "slug", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["slug", "MyString"], ["description", "MyText"], ["source", "MyString"], ["created_at", "2021-09-09 18:40:36.886178"], ["updated_at", "2021-09-09 18:40:36.886178"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering supplies/edit.html.haml
+  Rendered supplies/_form.html.haml (Duration: 35.7ms | Allocations: 4358)
+  Rendered supplies/edit.html.haml (Duration: 42.9ms | Allocations: 5749)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSupply Create (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "slug", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["source", "Source"], ["created_at", "2021-09-09 18:40:36.963293"], ["updated_at", "2021-09-09 18:40:36.963293"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSupply Create (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "slug", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["source", "Source"], ["created_at", "2021-09-09 18:40:36.967571"], ["updated_at", "2021-09-09 18:40:36.967571"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  Rendering supplies/new.html.haml
+  Rendered supplies/_form.html.haml (Duration: 4.4ms | Allocations: 965)
+  Rendered supplies/new.html.haml (Duration: 8.7ms | Allocations: 2088)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSupply Create (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "slug", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["source", "Source"], ["created_at", "2021-09-09 18:40:37.037007"], ["updated_at", "2021-09-09 18:40:37.037007"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering supplies/show.html.haml
+  Rendered supplies/show.html.haml (Duration: 5.7ms | Allocations: 2205)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTool Create (0.5ms)[0m  [1m[32mINSERT INTO "tools" ("name", "slug", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "MyString"], ["slug", "MyString"], ["description", "MyText"], ["composition", "MyString"], ["created_at", "2021-09-09 18:40:37.083857"], ["updated_at", "2021-09-09 18:40:37.083857"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering tools/edit.html.haml
+  Rendered tools/_form.html.haml (Duration: 12.7ms | Allocations: 4354)
+  Rendered tools/edit.html.haml (Duration: 18.0ms | Allocations: 5745)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTool Create (0.5ms)[0m  [1m[32mINSERT INTO "tools" ("name", "slug", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["composition", "Composition"], ["created_at", "2021-09-09 18:40:37.130533"], ["updated_at", "2021-09-09 18:40:37.130533"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTool Create (0.5ms)[0m  [1m[32mINSERT INTO "tools" ("name", "slug", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["composition", "Composition"], ["created_at", "2021-09-09 18:40:37.134708"], ["updated_at", "2021-09-09 18:40:37.134708"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  Rendering tools/new.html.haml
+  Rendered tools/_form.html.haml (Duration: 4.2ms | Allocations: 965)
+  Rendered tools/new.html.haml (Duration: 8.0ms | Allocations: 2088)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTool Create (0.5ms)[0m  [1m[32mINSERT INTO "tools" ("name", "slug", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Name"], ["slug", "Slug"], ["description", "MyText"], ["composition", "Composition"], ["created_at", "2021-09-09 18:40:37.203222"], ["updated_at", "2021-09-09 18:40:37.203222"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering tools/show.html.haml
+  Rendered tools/show.html.haml (Duration: 6.1ms | Allocations: 2205)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (5.2ms)[0m  [1m[31mDELETE FROM "how_tos";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'how_tos';[0m
+  [1m[35m (4.7ms)[0m  [1m[31mDELETE FROM "ingredients";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ingredients';[0m
+  [1m[35m (7.6ms)[0m  [1m[31mDELETE FROM "recipes";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'recipes';[0m
+  [1m[35m (4.5ms)[0m  [1m[31mDELETE FROM "supplies";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'supplies';[0m
+  [1m[35m (5.5ms)[0m  [1m[31mDELETE FROM "tools";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'tools';[0m
+  [1m[35m (8.0ms)[0m  [1m[31mDELETE FROM "uses";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'uses';[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering uses/new.html.haml
+  Rendered uses/_form.html.haml (Duration: 29.5ms | Allocations: 7525)
+  Rendered uses/new.html.haml (Duration: 39.6ms | Allocations: 11752)

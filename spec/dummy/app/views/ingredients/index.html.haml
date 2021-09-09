@@ -1,0 +1,31 @@
+%h1 Listing ingredients
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Slug
+      %th Description
+      %th Aisle
+      %th Store
+      %th Cost
+      %th
+      %th
+      %th
+
+  %tbody
+    - @ingredients.each do |ingredient|
+      %tr
+        %td= ingredient.name
+        %td= ingredient.slug
+        %td= ingredient.description
+        %td= ingredient.aisle
+        %td= ingredient.store
+        %td= ingredient.cost
+        %td= link_to 'Show', ingredient
+        %td= link_to 'Edit', edit_ingredient_path(ingredient)
+        %td= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Ingredient', new_ingredient_path

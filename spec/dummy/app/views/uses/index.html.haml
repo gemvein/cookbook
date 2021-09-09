@@ -1,0 +1,35 @@
+%h1 Listing uses
+
+%table
+  %thead
+    %tr
+      %th Use in
+      %th Use of
+      %th Quantity minimum
+      %th Quantity maximum
+      %th Unit
+      %th Sort
+      %th Note
+      %th Preparation
+      %th
+      %th
+      %th
+
+  %tbody
+    - @uses.each do |use|
+      %tr
+        %td= use.use_in
+        %td= use.use_of
+        %td= use.quantity_minimum
+        %td= use.quantity_maximum
+        %td= use.unit
+        %td= use.sort
+        %td= use.note
+        %td= use.preparation
+        %td= link_to 'Show', use
+        %td= link_to 'Edit', edit_use_path(use)
+        %td= link_to 'Destroy', use, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Use', new_use_path

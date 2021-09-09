@@ -1,0 +1,27 @@
+%h1 Listing tools
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Slug
+      %th Description
+      %th Composition
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tools.each do |tool|
+      %tr
+        %td= tool.name
+        %td= tool.slug
+        %td= tool.description
+        %td= tool.composition
+        %td= link_to 'Show', tool
+        %td= link_to 'Edit', edit_tool_path(tool)
+        %td= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tool', new_tool_path

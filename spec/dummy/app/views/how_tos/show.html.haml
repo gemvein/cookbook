@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @how_to.name
+%p
+  %b Slug:
+  = @how_to.slug
+%p
+  %b Description:
+  = @how_to.description
+%p
+  %b Instructions:
+  = @how_to.instructions
+
+= link_to 'Edit', edit_how_to_path(@how_to)
+\|
+= link_to 'Back', how_tos_path

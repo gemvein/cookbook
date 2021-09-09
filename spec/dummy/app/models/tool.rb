@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-Cookbook::Engine.routes.draw do
+class Tool < ApplicationRecord
 end

@@ -1,0 +1,27 @@
+%h1 Listing supplies
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Slug
+      %th Description
+      %th Source
+      %th
+      %th
+      %th
+
+  %tbody
+    - @supplies.each do |supply|
+      %tr
+        %td= supply.name
+        %td= supply.slug
+        %td= supply.description
+        %td= supply.source
+        %td= link_to 'Show', supply
+        %td= link_to 'Edit', edit_supply_path(supply)
+        %td= link_to 'Destroy', supply, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Supply', new_supply_path
