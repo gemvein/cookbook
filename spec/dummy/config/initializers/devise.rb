@@ -9,13 +9,12 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  # The secret key used by Devise. Devise uses this key to generate
+  # The secret key used by Devise. Devise cookbook this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '5d6e7386fb03a0c8ef5fcd49cf10dfebd2b522359d48451469248d'\
-  # '1d0e907b887be1ba4a34ed5b1a9ffbf6596258d3e3529184b04da042ba5c6eaf0efeda8d1e'
+  # config.secret_key = '41fc583e58752aa998ca55f8076cc514c9c83e89c44183e48209534982c229d6ed6670cab55d4991f3349d6516e4073b010b9fa62d111aa243ce80091b2b1913'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -127,8 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '0bd72ccfa1fd6a3941b9cbb719be2fc4546a3fcaf40e7d31904aa3f3d21aba'\
-  # '58471f8f05036d15fc1cc649f5fad213b35277222ddaabdcbf2894d7bda35dfd08'
+  # config.pepper = 'e6b63d7345edb1699b45e47ad0eab24928685ce9cd094a98b9461ae76bf2990179a8e5c5d005dffcc98f276b58f12d9754aec35bb44e6715e6bac7cef5b61fdd'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -299,8 +297,7 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   # ==> Turbolinks configuration
-  # If your app is using Turbolinks, Turbolinks::Controller needs to be included to
-  # make redirection work correctly:
+  # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
   #
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller

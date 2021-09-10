@@ -1,0 +1,15 @@
+- usables.each do |usable|
+  - if usable.uses.any?
+    %h3= usable.title
+    %ul.used_in{class: usable.plural_class}
+      - usable.uses.each do |use|
+        %li.use_in{class: usable.singular_class}
+          #{use.quantity_with_unit}
+          - if use.preparation.present?
+            = succeed ', ' do
+              = link_to use.use_of.name, use.use_of
+            = use.preparation
+          - else
+            = link_to use.use_of.name, use.use_of
+          - if use.note.present?
+            (#{use.note})

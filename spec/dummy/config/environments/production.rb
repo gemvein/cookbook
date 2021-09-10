@@ -35,7 +35,7 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
 
-  # Specifies the header that your server uses for sending files.
+  # Specifies the header that your server cookbook for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
@@ -108,7 +108,7 @@ Rails.application.configure do
   # database is appropriate to use based on the time delay.
   #
   # The `database_resolver_context` class is used by the middleware to set
-  # timestamps for the last write to the primary. The resolver uses the context
+  # timestamps for the last write to the primary. The resolver cookbook the context
   # class timestamps to determine how long to wait before reading from the
   # replica.
   #

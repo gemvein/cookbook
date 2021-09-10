@@ -71,3 +71,997 @@
   [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 4], ["use_of_type", "Ingredient"], ["LIMIT", 11]]
   [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 4], ["use_of_type", "Ingredient"], ["use_in_type", "Recipe"], ["LIMIT", 11]]
   [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "cookbook_uses" ON "recipes"."id" = "cookbook_uses"."use_in_id" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 4], ["use_of_type", "Ingredient"], ["use_in_type", "Recipe"], ["LIMIT", 11]]
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210910142322)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142322"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142323"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210910142323"]]
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210910142322)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210910142322"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210910142322)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142322"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142323"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cookbook_uses"[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "cookbook_uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_in" ON "cookbook_uses" ("use_in_type", "use_in_id")[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_of" ON "cookbook_uses" ("use_of_type", "use_of_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "how_tos"[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "how_tos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_how_tos_on_slug" ON "how_tos" ("slug")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "aisle" varchar, "store" varchar, "cost" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_ingredients_on_slug" ON "ingredients" ("slug")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "serves" varchar, "meal" varchar, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_recipes_on_slug" ON "recipes" ("slug")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "supplies"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "supplies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "source" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_supplies_on_slug" ON "supplies" ("slug")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "tools"[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "tools" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "composition" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_tools_on_slug" ON "tools" ("slug")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210910142323)[0m
+  [1m[35m (4.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210909175711),
+(20210909181442),
+(20210909181455),
+(20210909181516),
+(20210909181533),
+(20210909185303),
+(20210910142322);
+
+[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-10 14:37:27.789551"], ["updated_at", "2021-09-10 14:37:27.789551"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-09-10 14:37:27.802782"], ["key", "environment"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "f103a160444a3ae7524f2c563c9d5c63848a9c2e"], ["created_at", "2021-09-10 14:37:27.814203"], ["updated_at", "2021-09-10 14:37:27.814203"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/cookbook" for 127.0.0.1 at 2021-09-10 08:47:55 -0600
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/cookbook"):
+  
+Started GET "/recipes" for 127.0.0.1 at 2021-09-10 08:48:05 -0600
+Processing by RecipesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/index.html.haml within layouts/application
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/recipes/index.html.haml:17
+  Rendered recipes/index.html.haml within layouts/application (Duration: 29.6ms | Allocations: 11183)
+  Rendered layout layouts/application.html.erb (Duration: 129.8ms | Allocations: 36190)
+Completed 200 OK in 242ms (Views: 132.6ms | ActiveRecord: 1.2ms | Allocations: 55046)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 08:48:10 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  Rendered recipes/show.html.haml within layouts/application (Duration: 35.0ms | Allocations: 6180)
+  Rendered layout layouts/application.html.erb (Duration: 35.4ms | Allocations: 6254)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.6ms | Allocations: 7758)
+
+
+  
+ActionView::Template::Error (undefined method `cookbook_used_in' for #<ActionView::Base:0x0055a204795b20>):
+    19:   %b Instructions:
+    20:   = @recipe.instructions
+    21: 
+    22:   = cookbook_used_in @recipe
+    23: 
+    24: = link_to 'Edit', edit_recipe_path(@recipe)
+    25: \|
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 08:49:32 -0600
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 68.5ms | Allocations: 22119)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 94.1ms | Allocations: 29876)
+  Rendered layout layouts/application.html.erb (Duration: 106.4ms | Allocations: 35438)
+Completed 200 OK in 207ms (Views: 109.6ms | ActiveRecord: 5.0ms | Allocations: 61656)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 08:52:57 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 33.1ms | Allocations: 5686)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 41.7ms | Allocations: 9119)
+  Rendered layout layouts/application.html.erb (Duration: 42.4ms | Allocations: 9191)
+Completed 500 Internal Server Error in 173ms (ActiveRecord: 7.4ms | Allocations: 32182)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `model' for #<ActionView::Base:0x0055ef97aaf8c0>
+Did you mean?  module):
+    1: %dl
+    2:   = debug model.uses_of
+    3:   -# - model.uses_of.each do |usable_table_name|
+    4: 
+    5: 
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 08:53:11 -0600
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 19.1ms | Allocations: 5394)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 48.0ms | Allocations: 13111)
+  Rendered layout layouts/application.html.erb (Duration: 48.3ms | Allocations: 13186)
+Completed 500 Internal Server Error in 153ms (ActiveRecord: 1.2ms | Allocations: 39379)
+
+
+  
+ActionView::Template::Error (undefined method `uses_of' for #<Class:0x0000556b39caa6f8>):
+    1: %dl
+    2:   = debug model.uses_of
+    3:   -# - model.uses_of.each do |usable_table_name|
+    4: 
+    5: 
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 08:53:23 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.5ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (1.4ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.4ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 213.7ms | Allocations: 22450)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 253.2ms | Allocations: 25755)
+  Rendered layout layouts/application.html.erb (Duration: 309.0ms | Allocations: 31301)
+Completed 200 OK in 320ms (Views: 305.5ms | ActiveRecord: 10.1ms | Allocations: 33039)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 08:57:30 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 26.0ms | Allocations: 5434)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 31.3ms | Allocations: 8858)
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 8930)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 2.0ms | Allocations: 31874)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `using' for #<ActionView::Base:0x00556b3a4bd3b8>):
+    1: %dl
+    2:   - using.class.used_in.each do |usable_table_name|
+    3:     :ruby
+    4:       usable_model = usable_table_name.to_s.classify.constantize
+    5:     %dt= usable_model.model_name.human
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 08:58:55 -0600
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mIngredient Load (0.5ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" INNER JOIN "cookbook_uses" ON "ingredients"."id" = "cookbook_uses"."use_of_id" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.4ms)[0m  [1m[34mSELECT "tools".* FROM "tools" INNER JOIN "cookbook_uses" ON "tools"."id" = "cookbook_uses"."use_of_id" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 3297.0ms | Allocations: 1119571)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 3310.0ms | Allocations: 1124581)
+  Rendered layout layouts/application.html.erb (Duration: 3310.3ms | Allocations: 1124656)
+Completed 500 Internal Server Error in 3453ms (ActiveRecord: 6.6ms | Allocations: 1150849)
+
+
+  
+ActionView::Template::Error (undefined method `quantity_with_unit' for #<Tool:0x00007f0401e66c50>):
+     7:       %ul.used_in{class: usable_table_sym.to_s}
+     8:         - using.send(usable_table_sym).each do |use|
+     9:           %li.use_in{class: usable_table_sym.to_s.singularize}
+    10:             #{use.quantity_with_unit}
+    11:             - if use.preparation.present?
+    12:               = succeed ', ' do
+    13:                 = link_to use.use_of.name, use.use_of
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 09:01:11 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Supply"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 57.2ms | Allocations: 20433)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 63.7ms | Allocations: 23704)
+  Rendered layout layouts/application.html.erb (Duration: 76.1ms | Allocations: 29259)
+Completed 200 OK in 82ms (Views: 75.0ms | ActiveRecord: 3.7ms | Allocations: 30997)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2021-09-10 09:02:21 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["use_of_type", "Supply"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 35.2ms | Allocations: 10410)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 40.1ms | Allocations: 13669)
+  Rendered layout layouts/application.html.erb (Duration: 44.2ms | Allocations: 15257)
+Completed 200 OK in 53ms (Views: 45.2ms | ActiveRecord: 2.5ms | Allocations: 16960)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:02:27 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.1ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 28.4ms | Allocations: 11136)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 29.7ms | Allocations: 11504)
+  Rendered layout layouts/application.html.erb (Duration: 32.6ms | Allocations: 12902)
+Completed 200 OK in 36ms (Views: 31.9ms | ActiveRecord: 1.8ms | Allocations: 13609)
+
+
+Started GET "/recipes/3" for 127.0.0.1 at 2021-09-10 09:02:31 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 3], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 3], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.1ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 3], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 3], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 3], ["use_in_type", "Recipe"], ["use_of_type", "Supply"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 17.6ms | Allocations: 7007)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 18.4ms | Allocations: 7369)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 8765)
+Completed 200 OK in 24ms (Views: 20.5ms | ActiveRecord: 1.6ms | Allocations: 9454)
+
+
+Started GET "/recipes/4" for 127.0.0.1 at 2021-09-10 09:02:34 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 4], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 4], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 4], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 4], ["use_in_type", "Recipe"], ["use_of_type", "Supply"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 15.8ms | Allocations: 4507)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 17.4ms | Allocations: 4864)
+  Rendered layout layouts/application.html.erb (Duration: 20.4ms | Allocations: 6262)
+Completed 200 OK in 24ms (Views: 19.9ms | ActiveRecord: 1.6ms | Allocations: 6968)
+
+
+Started GET "/recipes/5" for 127.0.0.1 at 2021-09-10 09:02:38 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 5], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 5], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 5], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 5], ["use_in_type", "Recipe"], ["use_of_type", "Supply"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 13.2ms | Allocations: 4506)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 14.0ms | Allocations: 4874)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 6272)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 1.2ms | Allocations: 6978)
+
+
+Started GET "/how_tos" for 127.0.0.1 at 2021-09-10 09:02:49 -0600
+Processing by HowTosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering how_tos/index.html.haml within layouts/application
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos"[0m
+  ↳ app/views/how_tos/index.html.haml:15
+  Rendered how_tos/index.html.haml within layouts/application (Duration: 19.4ms | Allocations: 7649)
+  Rendered layout layouts/application.html.erb (Duration: 23.7ms | Allocations: 9268)
+Completed 200 OK in 29ms (Views: 25.2ms | ActiveRecord: 1.5ms | Allocations: 10416)
+
+
+Started GET "/how_tos/2" for 127.0.0.1 at 2021-09-10 09:02:51 -0600
+Processing by HowTosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/how_tos_controller.rb:53:in `set_how_to'
+  Rendering layout layouts/application.html.erb
+  Rendering how_tos/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Tool"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.1ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Supply"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 23.8ms | Allocations: 6057)
+  Rendered how_tos/show.html.haml within layouts/application (Duration: 27.9ms | Allocations: 8605)
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 10005)
+Completed 200 OK in 37ms (Views: 30.8ms | ActiveRecord: 2.2ms | Allocations: 10926)
+
+
+Started GET "/how_tos/5" for 127.0.0.1 at 2021-09-10 09:02:55 -0600
+Processing by HowTosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/how_tos_controller.rb:53:in `set_how_to'
+  Rendering layout layouts/application.html.erb
+  Rendering how_tos/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 5], ["use_in_type", "HowTo"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 5], ["use_in_type", "HowTo"], ["use_of_type", "Tool"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 5], ["use_in_type", "HowTo"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 15.5ms | Allocations: 3557)
+  Rendered how_tos/show.html.haml within layouts/application (Duration: 16.7ms | Allocations: 3912)
+  Rendered layout layouts/application.html.erb (Duration: 20.1ms | Allocations: 5308)
+Completed 200 OK in 23ms (Views: 19.4ms | ActiveRecord: 1.7ms | Allocations: 5996)
+
+
+Started GET "/ingredients" for 127.0.0.1 at 2021-09-10 09:03:01 -0600
+Processing by IngredientsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering ingredients/index.html.haml within layouts/application
+  [1m[36mIngredient Load (0.5ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients"[0m
+  ↳ app/views/ingredients/index.html.haml:17
+  Rendered ingredients/index.html.haml within layouts/application (Duration: 8.9ms | Allocations: 4535)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 6157)
+Completed 200 OK in 18ms (Views: 15.9ms | ActiveRecord: 0.5ms | Allocations: 7254)
+
+
+Started GET "/ingredients/1" for 127.0.0.1 at 2021-09-10 09:03:03 -0600
+Processing by IngredientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:53:in `set_ingredient'
+  Rendering layout layouts/application.html.erb
+  Rendering ingredients/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_of_id", 1], ["use_of_type", "Ingredient"]]
+  ↳ app/views/ingredients/show.html.haml:22
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/ingredients/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_uses_of.html.haml (Duration: 10.7ms | Allocations: 3448)
+  Rendered ingredients/show.html.haml within layouts/application (Duration: 18.1ms | Allocations: 6726)
+  Rendered layout layouts/application.html.erb (Duration: 21.8ms | Allocations: 8127)
+Completed 200 OK in 27ms (Views: 22.3ms | ActiveRecord: 0.9ms | Allocations: 9032)
+
+
+Started GET "/how_tos/1" for 127.0.0.1 at 2021-09-10 09:03:09 -0600
+Processing by HowTosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/how_tos_controller.rb:53:in `set_how_to'
+  Rendering layout layouts/application.html.erb
+  Rendering how_tos/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Tool"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Supply"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 17.5ms | Allocations: 5190)
+  Rendered how_tos/show.html.haml within layouts/application (Duration: 18.9ms | Allocations: 5545)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 6945)
+Completed 200 OK in 26ms (Views: 21.9ms | ActiveRecord: 1.7ms | Allocations: 7633)
+
+
+Started GET "/how_tos/1" for 127.0.0.1 at 2021-09-10 09:03:26 -0600
+Processing by HowTosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/how_tos_controller.rb:53:in `set_how_to'
+  Rendering layout layouts/application.html.erb
+  Rendering how_tos/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Tool"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 1], ["use_in_type", "HowTo"], ["use_of_type", "Supply"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 22.6ms | Allocations: 5183)
+  Rendered how_tos/show.html.haml within layouts/application (Duration: 24.3ms | Allocations: 5536)
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 6932)
+Completed 200 OK in 31ms (Views: 27.2ms | ActiveRecord: 1.9ms | Allocations: 7619)
+
+
+Started GET "/ingredients/2" for 127.0.0.1 at 2021-09-10 09:03:44 -0600
+Processing by IngredientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:53:in `set_ingredient'
+  Rendering layout layouts/application.html.erb
+  Rendering ingredients/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_of_id", 2], ["use_of_type", "Ingredient"]]
+  ↳ app/views/ingredients/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_uses_of.html.haml (Duration: 3.4ms | Allocations: 702)
+  Rendered ingredients/show.html.haml within layouts/application (Duration: 5.2ms | Allocations: 1097)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 2493)
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 3183)
+
+
+Started GET "/ingredients/3" for 127.0.0.1 at 2021-09-10 09:03:48 -0600
+Processing by IngredientsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:53:in `set_ingredient'
+  Rendering layout layouts/application.html.erb
+  Rendering ingredients/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.1ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_of_id", 3], ["use_of_type", "Ingredient"]]
+  ↳ app/views/ingredients/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_uses_of.html.haml (Duration: 1.7ms | Allocations: 702)
+  Rendered ingredients/show.html.haml within layouts/application (Duration: 2.6ms | Allocations: 1094)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2490)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.3ms | Allocations: 3179)
+
+
+Started GET "/ingredients/4" for 127.0.0.1 at 2021-09-10 09:03:51 -0600
+Processing by IngredientsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/ingredients_controller.rb:53:in `set_ingredient'
+  Rendering layout layouts/application.html.erb
+  Rendering ingredients/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_of_id", 4], ["use_of_type", "Ingredient"]]
+  ↳ app/views/ingredients/show.html.haml:22
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ingredients/show.html.haml:22
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/ingredients/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_uses_of.html.haml (Duration: 12.0ms | Allocations: 2467)
+  Rendered ingredients/show.html.haml within layouts/application (Duration: 14.0ms | Allocations: 2849)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 4245)
+Completed 200 OK in 21ms (Views: 18.7ms | ActiveRecord: 0.9ms | Allocations: 4934)
+
+
+Started GET "/how_tos/2" for 127.0.0.1 at 2021-09-10 09:03:55 -0600
+Processing by HowTosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/how_tos_controller.rb:53:in `set_how_to'
+  Rendering layout layouts/application.html.erb
+  Rendering how_tos/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Tool"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.1ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "HowTo"], ["use_of_type", "Supply"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 17.3ms | Allocations: 5991)
+  Rendered how_tos/show.html.haml within layouts/application (Duration: 18.3ms | Allocations: 6348)
+  Rendered layout layouts/application.html.erb (Duration: 21.5ms | Allocations: 7744)
+Completed 200 OK in 24ms (Views: 20.9ms | ActiveRecord: 1.5ms | Allocations: 8431)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:03:59 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.1ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 24.4ms | Allocations: 6945)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 25.7ms | Allocations: 7311)
+  Rendered layout layouts/application.html.erb (Duration: 29.6ms | Allocations: 8711)
+Completed 200 OK in 32ms (Views: 28.6ms | ActiveRecord: 2.1ms | Allocations: 9401)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:10:19 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 22.0ms | Allocations: 6200)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 30.4ms | Allocations: 9501)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 9572)
+Completed 500 Internal Server Error in 149ms (ActiveRecord: 1.1ms | Allocations: 31970)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `used_in' for #<ActionView::Base:0x00558799cff4b0>
+Did you mean?  user_session):
+    1: %dl
+    2:   - used_in.each do |usable|
+    3:     - if usable.uses.any?
+    4:       %dt= usable.title
+    5:       %dd
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:10:40 -0600
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 18.4ms | Allocations: 6792)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 2463.3ms | Allocations: 1115893)
+  Rendered layout layouts/application.html.erb (Duration: 2463.6ms | Allocations: 1115968)
+Completed 500 Internal Server Error in 2579ms (ActiveRecord: 1.9ms | Allocations: 1142180)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `used_in' for #<ActionView::Base:0x0055a07a4ed8e0>
+Did you mean?  user_session):
+    1: %dl
+    2:   - used_in.each do |usable|
+    3:     - if usable.uses.any?
+    4:       %dt= usable.title
+    5:       %dd
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:11:25 -0600
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 17.0ms | Allocations: 6792)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 2873.6ms | Allocations: 1115893)
+  Rendered layout layouts/application.html.erb (Duration: 2873.9ms | Allocations: 1115968)
+Completed 500 Internal Server Error in 3004ms (ActiveRecord: 1.8ms | Allocations: 1142180)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `used_in' for #<ActionView::Base:0x0055da313a7c60>
+Did you mean?  user_session):
+    1: %dl
+    2:   - used_in.each do |usable|
+    3:     - if usable.uses.any?
+    4:       %dt= usable.title
+    5:       %dd
+  
+app/views/recipes/show.html.haml:22
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:11:43 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.5ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mIngredient Load (0.4ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 318.0ms | Allocations: 27051)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 338.5ms | Allocations: 30725)
+  Rendered layout layouts/application.html.erb (Duration: 376.7ms | Allocations: 36281)
+Completed 200 OK in 393ms (Views: 362.2ms | ActiveRecord: 18.9ms | Allocations: 38018)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:12:10 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 29.0ms | Allocations: 9704)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 37.7ms | Allocations: 13365)
+  Rendered layout layouts/application.html.erb (Duration: 42.0ms | Allocations: 14954)
+Completed 200 OK in 50ms (Views: 43.8ms | ActiveRecord: 2.4ms | Allocations: 16675)
+
+
+Started GET "/tools/2" for 127.0.0.1 at 2021-09-10 09:12:47 -0600
+Processing by ToolsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tools_controller.rb:53:in `set_tool'
+  Rendering layout layouts/application.html.erb
+  Rendering tools/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_of_id", 2], ["use_of_type", "Tool"]]
+  ↳ app/views/tools/show.html.haml:16
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/tools/show.html.haml:16
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/tools/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_uses_of.html.haml (Duration: 18.8ms | Allocations: 8029)
+  Rendered tools/show.html.haml within layouts/application (Duration: 22.9ms | Allocations: 10860)
+  Rendered layout layouts/application.html.erb (Duration: 25.9ms | Allocations: 12262)
+Completed 200 OK in 32ms (Views: 26.4ms | ActiveRecord: 1.9ms | Allocations: 13867)
+
+
+Started GET "/tools/2" for 127.0.0.1 at 2021-09-10 09:13:05 -0600
+Processing by ToolsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tools_controller.rb:53:in `set_tool'
+  Rendering layout layouts/application.html.erb
+  Rendering tools/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_of_id", 2], ["use_of_type", "Tool"]]
+  ↳ app/views/tools/show.html.haml:16
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/tools/show.html.haml:16
+  [1m[36mHowTo Load (0.8ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/tools/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_uses_of.html.haml (Duration: 10.5ms | Allocations: 3957)
+  Rendered tools/show.html.haml within layouts/application (Duration: 14.7ms | Allocations: 6798)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 8385)
+Completed 200 OK in 26ms (Views: 20.6ms | ActiveRecord: 1.3ms | Allocations: 10086)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:13:09 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 31.5ms | Allocations: 9701)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 40.5ms | Allocations: 13305)
+  Rendered layout layouts/application.html.erb (Duration: 44.1ms | Allocations: 14708)
+Completed 200 OK in 50ms (Views: 44.8ms | ActiveRecord: 2.3ms | Allocations: 16187)
+
+
+Started GET "/how_tos/3" for 127.0.0.1 at 2021-09-10 09:13:12 -0600
+Processing by HowTosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mHowTo Load (0.4ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/how_tos_controller.rb:53:in `set_how_to'
+  Rendering layout layouts/application.html.erb
+  Rendering how_tos/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 3], ["use_in_type", "HowTo"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 3], ["use_in_type", "HowTo"], ["use_of_type", "Tool"]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 3], ["use_in_type", "HowTo"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/how_tos/show.html.haml:16
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 23.4ms | Allocations: 6046)
+  Rendered how_tos/show.html.haml within layouts/application (Duration: 30.8ms | Allocations: 8900)
+  Rendered layout layouts/application.html.erb (Duration: 34.2ms | Allocations: 10300)
+Completed 200 OK in 42ms (Views: 35.5ms | ActiveRecord: 2.2ms | Allocations: 11905)
+
+
+Started GET "/recipes/2" for 127.0.0.1 at 2021-09-10 09:13:18 -0600
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/recipes_controller.rb:53:in `set_recipe'
+  Rendering layout layouts/application.html.erb
+  Rendering recipes/show.html.haml within layouts/application
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Ingredient"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Tool"]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  [1m[36mCookbook::Use Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? LIMIT ?[0m  [["use_in_id", 2], ["use_in_type", "Recipe"], ["use_of_type", "Supply"], ["LIMIT", 1]]
+  ↳ app/views/recipes/show.html.haml:22
+  Rendered /home/loren/Code/cookbook/app/views/cookbook/_used_in.html.haml (Duration: 34.5ms | Allocations: 6698)
+  Rendered recipes/show.html.haml within layouts/application (Duration: 37.9ms | Allocations: 7463)
+  Rendered layout layouts/application.html.erb (Duration: 41.6ms | Allocations: 8865)
+Completed 200 OK in 46ms (Views: 40.0ms | ActiveRecord: 3.0ms | Allocations: 9572)
+
+

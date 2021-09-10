@@ -8,7 +8,7 @@ module Cookbook
 
     initializer 'local_helper.action_controller' do
       ActiveSupport.on_load :action_controller do
-        # helper Cookbook::ApplicationHelper
+        helper Cookbook::ApplicationHelper
       end
     end
     initializer 'cookbook.assets.precompile' do |app|

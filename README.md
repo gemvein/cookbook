@@ -68,7 +68,7 @@ Add the helpers to the relevant views
 ```haml
 = cookbook_uses_of @ingredient
 -# OR
-= cookbook_uses_in @recipe
+= cookbook_used_in @recipe
 ```
 
 ## Contributing

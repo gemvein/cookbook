@@ -1,0 +1,6 @@
+%h3 Used In
+%ul.uses_of
+  - uses.each do |use|
+    %li.use_of
+      = link_to use.use_in.name, use.use_in
+      (#{use.quantity_with_unit}: #{use.note})
