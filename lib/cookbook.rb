@@ -20,7 +20,6 @@ module Cookbook
   require 'sass-rails'
   require 'simple_form'
   require 'vanilla_nested'
-  require 'kaminari'
   require 'cancancan' if Cookbook.configuration.authorize_with == :cancancan
 end
 

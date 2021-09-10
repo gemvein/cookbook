@@ -12,8 +12,6 @@ gem 'cancancan', '>= 3.3', '< 4'
 gem 'simple_form', '>= 5.1', '< 6'
 gem 'vanilla_nested', '>= 1.3', '< 2'
 
-gem 'kaminari', '>= 1.2.1', '< 2'
-
 group :development, :test do
   gem 'database_cleaner', '>=1.8', '<2'
   gem 'devise', '>= 4.8', '< 5'
