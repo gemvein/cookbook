@@ -1,9 +1,11 @@
-%h3 Used In
-%ul.uses_of
-  - uses.each do |use|
-    :ruby
-      details = [use.quantity_with_unit.presence, use.note.presence].compact.join(': ')
-    %li.use_of
-      = link_to use.use_in.name, use.use_in
-      - if details.present?
-        (#{details})
+- if uses.any?
+  %h3 Used In
+  %ul.uses_of
+    - uses.each do |use|
+      :ruby
+        amount_plus_prep = [use.quantity_with_unit.presence, use.preparation.presence].compact.join(', ')
+        details = [amount_plus_prep.presence, use.note.presence].compact.join(': ')
+      %li.use_of
+        = link_to use.use_in.name, use.use_in
+        - if details.present?
+          (#{details})
