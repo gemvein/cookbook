@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_181533) do
+ActiveRecord::Schema.define(version: 2021_09_09_185303) do
+
+  create_table "cookbook_uses", force: :cascade do |t|
+    t.boolean "published", default: true
+    t.string "use_in_type", null: false
+    t.integer "use_in_id", null: false
+    t.string "use_of_type", null: false
+    t.integer "use_of_id", null: false
+    t.float "quantity_minimum"
+    t.float "quantity_maximum"
+    t.string "unit"
+    t.integer "sort"
+    t.string "note"
+    t.string "preparation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["use_in_type", "use_in_id"], name: "index_cookbook_uses_on_use_in"
+    t.index ["use_of_type", "use_of_id"], name: "index_cookbook_uses_on_use_of"
+  end
 
   create_table "how_tos", force: :cascade do |t|
     t.string "name"
@@ -64,24 +82,6 @@ ActiveRecord::Schema.define(version: 2021_09_09_181533) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slug"], name: "index_tools_on_slug", unique: true
-  end
-
-  create_table "uses", force: :cascade do |t|
-    t.boolean "published", default: true
-    t.string "use_in_type", null: false
-    t.integer "use_in_id", null: false
-    t.string "use_of_type", null: false
-    t.integer "use_of_id", null: false
-    t.float "quantity_minimum"
-    t.float "quantity_maximum"
-    t.string "unit"
-    t.integer "sort"
-    t.string "note"
-    t.string "preparation"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["use_in_type", "use_in_id"], name: "index_uses_on_use_in"
-    t.index ["use_of_type", "use_of_id"], name: "index_uses_on_use_of"
   end
 
 end

@@ -22,6 +22,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'puma', '>= 4.3', '< 5'
   gem 'bundler', '>= 2', '< 3'
   gem 'factory_bot_rails', '>=5.1', '<6'
   gem 'juwelier', '~> 2.1.0'

@@ -1,212 +1,73 @@
-  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateRecipes (20210908224646)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_recipes_on_slug" ON "recipes" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210908224646"]]
-  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateIngredients (20210909141453)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_ingredients_on_slug" ON "ingredients" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909141453"]]
-  [1m[36mTRANSACTION (7.7ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateUses (20210909165918)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_in" ON "uses" ("use_in_type", "use_in_id")[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_of" ON "uses" ("use_of_type", "use_of_id")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909165918"]]
-  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "doodads"[0m
-  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "doodads" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
-  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_ingredients_on_slug" ON "ingredients" ("slug")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
-  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (6.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_recipes_on_slug" ON "recipes" ("slug")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "things"[0m
-  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "things" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
-  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "admin" boolean DEFAULT 0, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (9.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "uses"[0m
-  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (6.1ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_in" ON "uses" ("use_in_type", "use_in_id")[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_of" ON "uses" ("use_of_type", "use_of_id")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "works_cited_citations"[0m
-  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "works_cited_citations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "citation_type" varchar, "media" varchar, "title" varchar, "container_title" varchar, "publisher" varchar, "city" varchar, "edition" varchar, "volume" varchar, "number" varchar, "series" varchar, "year" varchar, "pages" varchar, "url" varchar, "online_database" varchar, "doi" varchar, "published_at" datetime, "accessed_at" datetime, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE INDEX "index_works_cited_citations_on_record" ON "works_cited_citations" ("record_type", "record_id")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "works_cited_contributors"[0m
-  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "works_cited_contributors" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "works_cited_citation_id" integer NOT NULL, "contributor_role" varchar, "first" varchar, "middle" varchar, "last" varchar, "suffix" varchar, "handle" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (9.1ms)[0m  [1m[35mCREATE INDEX "index_works_cited_contributors_on_works_cited_citation_id" ON "works_cited_contributors" ("works_cited_citation_id")[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
-  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
-  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
-  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aworks_cited_contributors" ("id" integer NOT NULL PRIMARY KEY, "works_cited_citation_id" integer NOT NULL, "contributor_role" varchar DEFAULT NULL, "first" varchar DEFAULT NULL, "middle" varchar DEFAULT NULL, "last" varchar DEFAULT NULL, "suffix" varchar DEFAULT NULL, "handle" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aworks_cited_contributors_on_works_cited_citation_id" ON "aworks_cited_contributors" ("works_cited_citation_id")[0m
-  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aworks_cited_contributors" ("id","works_cited_citation_id","contributor_role","first","middle","last","suffix","handle","created_at","updated_at")
-                     SELECT "id","works_cited_citation_id","contributor_role","first","middle","last","suffix","handle","created_at","updated_at" FROM "works_cited_contributors"[0m
-  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "works_cited_contributors"[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "works_cited_contributors" ("id" integer NOT NULL PRIMARY KEY, "works_cited_citation_id" integer NOT NULL, "contributor_role" varchar DEFAULT NULL, "first" varchar DEFAULT NULL, "middle" varchar DEFAULT NULL, "last" varchar DEFAULT NULL, "suffix" varchar DEFAULT NULL, "handle" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c1c75d62eb"
-FOREIGN KEY ("works_cited_citation_id")
-  REFERENCES "works_cited_citations" ("id")
-)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_works_cited_contributors_on_works_cited_citation_id" ON "works_cited_contributors" ("works_cited_citation_id")[0m
-  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "works_cited_contributors" ("id","works_cited_citation_id","contributor_role","first","middle","last","suffix","handle","created_at","updated_at")
-                     SELECT "id","works_cited_citation_id","contributor_role","first","middle","last","suffix","handle","created_at","updated_at" FROM "aworks_cited_contributors"[0m
-  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aworks_cited_contributors"[0m
-  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
-  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
-  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (4.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210909165918)[0m
-  [1m[35m (5.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
-(20210908224646),
-(20210909141453);
-
-[0m
-  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-09 17:04:05.816685"], ["updated_at", "2021-09-09 17:04:05.816685"]]
-  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-09-09 17:04:05.828745"], ["key", "environment"]]
-  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "8604b902c52501fade6b12790c94e51eac944b08"], ["created_at", "2021-09-09 17:04:05.841391"], ["updated_at", "2021-09-09 17:04:05.841391"]]
-  [1m[36mTRANSACTION (7.3ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateHowTos (20210909175711)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "how_tos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_how_tos_on_slug" ON "how_tos" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909175711"]]
-  [1m[36mTRANSACTION (14.4ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateIngredients (20210909181442)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "aisle" varchar, "store" varchar, "cost" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
-  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateUses (20210909165918)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_in" ON "uses" ("use_in_type", "use_in_id")[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_of" ON "uses" ("use_of_type", "use_of_id")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909165918"]]
-  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateHowTos (20210909175711)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "how_tos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_how_tos_on_slug" ON "how_tos" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909175711"]]
-  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateIngredients (20210909181442)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "aisle" varchar, "store" varchar, "cost" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_ingredients_on_slug" ON "ingredients" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181442"]]
-  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateSupplies (20210909181455)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "supplies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "source" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_supplies_on_slug" ON "supplies" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181455"]]
-  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateTools (20210909181516)
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "tools" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "composition" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_tools_on_slug" ON "tools" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181516"]]
-  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateRecipes (20210909181533)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "serves" varchar, "meal" varchar, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_recipes_on_slug" ON "recipes" ("slug")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181533"]]
-  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-09 18:39:57.808034"], ["updated_at", "2021-09-09 18:39:57.808034"]]
-  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "how_tos"[0m
-  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "how_tos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_how_tos_on_slug" ON "how_tos" ("slug")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "aisle" varchar, "store" varchar, "cost" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_ingredients_on_slug" ON "ingredients" ("slug")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
-  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "serves" varchar, "meal" varchar, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_recipes_on_slug" ON "recipes" ("slug")[0m
-  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "supplies"[0m
-  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "supplies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "source" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (8.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_supplies_on_slug" ON "supplies" ("slug")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tools"[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "tools" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "composition" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (9.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_tools_on_slug" ON "tools" ("slug")[0m
-  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "uses"[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[35m (6.2ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_in" ON "uses" ("use_in_type", "use_in_id")[0m
-  [1m[35m (8.9ms)[0m  [1m[35mCREATE INDEX "index_uses_on_use_of" ON "uses" ("use_of_type", "use_of_id")[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (4.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210909181533)[0m
-  [1m[35m (4.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
-(20210909165918),
-(20210909175711),
-(20210909181442),
-(20210909181455),
-(20210909181516);
-
-[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-09 18:39:58.009055"], ["updated_at", "2021-09-09 18:39:58.009055"]]
-  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-09-09 18:39:58.020498"], ["key", "environment"]]
-  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "d838ebd18fa8fb147081e96e2228e29a8a696b12"], ["created_at", "2021-09-09 18:39:58.031636"], ["updated_at", "2021-09-09 18:39:58.031636"]]
-  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.4ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" ORDER BY "how_tos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" ORDER BY "how_tos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["use_in_type", "Tool"], ["LIMIT", 11]]
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" INNER JOIN "cookbook_uses" ON "tools"."id" = "cookbook_uses"."use_in_id" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["use_in_type", "Tool"], ["LIMIT", 11]]
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" INNER JOIN "cookbook_uses" ON "supplies"."id" = "cookbook_uses"."use_in_id" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["use_in_type", "Supply"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["use_in_type", "Supply"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[36mHowTo Load (0.4ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" ORDER BY "how_tos"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 5], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" ORDER BY "cookbook_uses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSupply Load (0.4ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" INNER JOIN "cookbook_uses" ON "supplies"."id" = "cookbook_uses"."use_in_id" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["use_in_type", "Supply"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mHowTo Load (0.4ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" ORDER BY "cookbook_uses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" ORDER BY "cookbook_uses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.5ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Tool"], ["LIMIT", 11]]
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Tool"], ["LIMIT", 11]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Tool"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Tool"], ["LIMIT", 11]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.5ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Tool"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.5ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Tool"], ["use_of_type", "HowTo"], ["LIMIT", 11]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" ORDER BY "tools"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Tool"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.5ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Tool"], ["use_in_type", "HowTo"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Tool"], ["use_in_type", "Recipe"], ["LIMIT", 11]]
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" ORDER BY "ingredients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Ingredient"], ["use_in_type", "Recipe"], ["LIMIT", 11]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" ORDER BY "ingredients"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Ingredient"], ["use_in_type", "Recipe"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.4ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 1], ["use_of_type", "Ingredient"], ["LIMIT", 11]]
+  [1m[36mIngredient Load (0.3ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" ORDER BY "ingredients"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 2], ["use_of_type", "Ingredient"], ["LIMIT", 11]]
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" ORDER BY "ingredients"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 3], ["use_of_type", "Ingredient"], ["LIMIT", 11]]
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" ORDER BY "ingredients"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 3]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 4], ["use_of_type", "Ingredient"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 4], ["use_of_type", "Ingredient"], ["use_in_type", "Recipe"], ["LIMIT", 11]]
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" INNER JOIN "cookbook_uses" ON "recipes"."id" = "cookbook_uses"."use_in_id" WHERE "cookbook_uses"."use_of_id" = ? AND "cookbook_uses"."use_of_type" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_of_id", 4], ["use_of_type", "Ingredient"], ["use_in_type", "Recipe"], ["LIMIT", 11]]

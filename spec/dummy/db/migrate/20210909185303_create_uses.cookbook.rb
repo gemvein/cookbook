@@ -1,9 +1,11 @@
 # frozen_string_literal: true
-
 # This migration comes from cookbook (originally 20210909141929)
+
+# Uses acts as a polymorphic joining table with extras for context
+# For example, a Recipe might "use" Tools, Supplies, and Ingredients.
 class CreateUses < ActiveRecord::Migration[6.1]
   def change
-    create_table :uses do |t|
+    create_table :cookbook_uses do |t|
       t.boolean :published, default: true
       t.references :use_in, polymorphic: true, null: false
       t.references :use_of, polymorphic: true, null: false

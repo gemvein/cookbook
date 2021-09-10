@@ -2,25 +2,35 @@
 
 # Cookbook Module
 module Cookbook
-  def self.configure(configuration = Cookbook::Configuration.new)
-    block_given? && yield(configuration)
-    @configuration = configuration
-  end
+  class << self
+      def configure(configuration = Cookbook::Configuration.new)
+        block_given? && yield(configuration)
+        @configuration = configuration
+      end
 
-  def self.configuration
-    @configuration ||= Cookbook::Configuration.new
-  end
+      def configuration
+        @configuration ||= Cookbook::Configuration.new
+      end
+
+      private
+
+      def model_symbols_by_attribute(attribute)
+        ApplicationRecord
+          .descendants
+          .map { |x| x.name.to_s.constantize }
+          .select { |x| x.respond_to?(attribute) && x.send(attribute) }
+          .map { |x| x.table_name.to_sym }
+      end
+    end
 
   # Cookbook Configuration
   class Configuration
     attr_accessor(
-      :valid_citation_types,
-      :valid_contributor_roles
+      :variable
     )
 
     def initialize
-      self.valid_citation_types = %w[book periodical electronic interview email tweet]
-      self.valid_contributor_roles = %w[author editor compiler translator receiver]
+      self.variable = []
     end
   end
 end

@@ -8,7 +8,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :list, Cookbook::Use
+    can :read, Cookbook::Use
     can :read, Recipe
     can :read, Ingredient
 

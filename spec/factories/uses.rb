@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :use do
+  factory :use, class: Cookbook::Use do
     use_in { pick_from_models(%w[Recipe HowTo]) }
     use_of { pick_from_models(%w[Ingredient Supply Tool]) }
     quantity_minimum { 1.5 }

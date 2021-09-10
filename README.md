@@ -32,7 +32,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :list, Cookbook::Use
+    can :read, Cookbook::Use
     can :read, Recipe
     can :read, Ingredient
 
@@ -54,13 +54,13 @@ end
 Make a model ready to accept uses, such as Recipe or Instructions
 
 ```ruby
-acts_as_using
+acts_as_use_of
 ```
 
 Make a model a thing that gets used, such as Ingredient or Tool
 
 ```ruby
-acts_as_usable
+acts_as_used_in
 ```
 
 Add the helpers to the relevant views

@@ -12,8 +12,9 @@ module Cookbook
   require 'cookbook/railtie'
   require 'cookbook/version'
 
-  require 'cookbook/mixins/has_cookbook'
-  # require 'cookbook/extensions/time'
+  require 'cookbook/mixins/acts_as_used_in'
+  require 'cookbook/mixins/acts_as_use_of'
+  require 'cookbook/extensions/float'
 
   require 'haml-rails'
   require 'sass-rails'
@@ -23,4 +24,5 @@ module Cookbook
   require 'kaminari'
 end
 
-ActiveRecord::Base.extend Cookbook::Mixins::HasCookbook
+ActiveRecord::Base.extend Cookbook::Mixins::ActsAsUsedIn
+ActiveRecord::Base.extend Cookbook::Mixins::ActsAsUseOf
