@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from cookbook (originally 20210909141929)
 
 # Uses acts as a polymorphic joining table with extras for context

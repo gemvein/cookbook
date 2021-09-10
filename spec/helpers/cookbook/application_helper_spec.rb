@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-# rubocop:disable Layout/LineLength
 describe Cookbook::ApplicationHelper do
   describe '#cookbook' do
     before do
@@ -46,4 +45,3 @@ describe Cookbook::ApplicationHelper do
     end
   end
 end
-# rubocop:enable Layout/LineLength

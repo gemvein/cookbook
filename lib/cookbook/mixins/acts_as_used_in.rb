@@ -6,7 +6,6 @@ module Cookbook
     module ActsAsUsedIn
       extend ActiveSupport::Concern
 
-      # rubocop:disable Naming/PredicateName
       def acts_as_used_in(*model_symbols)
         extend ClassMethods
         include InstanceMethods
@@ -15,23 +14,23 @@ module Cookbook
 
         # Relationships
         has_many :uses, as: :use_of, class_name: 'Cookbook::Use'
-
-        uses_of.each do |table_sym|
-          model = table_sym.to_s.classify.constantize
-          name = model.model_name.to_s
-
-          has_many "#{model.model_name.param_key}_uses".to_sym, -> { where(use_in_type: name) }, as: :use_of, class_name: 'Cookbook::Use'
-          has_many table_sym, through: :uses, source: :use_in, source_type: name
-        end
+        associate_uses_of
       end
-      # rubocop:enable Naming/PredicateName
 
       # Extended by acts_as_used_in mixin
       module ClassMethods
         attr_accessor(:uses_of)
 
-        def is_used_in
-          true
+        def associate_uses_of
+          uses_of.each do |table_sym|
+            model = table_sym.to_s.classify.constantize
+            name = model.model_name.to_s
+
+            has_many "#{model.model_name.param_key}_uses".to_sym, lambda {
+              where(use_in_type: name)
+            }, as: :use_of, class_name: 'Cookbook::Use'
+            has_many table_sym, through: :uses, source: :use_in, source_type: name
+          end
         end
       end
 

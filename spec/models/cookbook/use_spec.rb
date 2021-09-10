@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Cookbook::Use, type: :model do
@@ -11,7 +13,8 @@ RSpec.describe Cookbook::Use, type: :model do
       quantity_maximum: 1,
       quantity_minimum: 0.5,
       unit: 'pinches',
-      note: 'for power')
+      note: 'for power'
+    )
   end
   let(:use_no_max_no_unit) do
     FactoryBot.create(
@@ -20,7 +23,8 @@ RSpec.describe Cookbook::Use, type: :model do
       use_of: ingredient,
       quantity_minimum: 0.25,
       quantity_maximum: nil,
-      note: 'for strength')
+      note: 'for strength'
+    )
   end
   let(:use_no_min_no_unit) do
     FactoryBot.create(
@@ -29,7 +33,8 @@ RSpec.describe Cookbook::Use, type: :model do
       use_of: ingredient,
       quantity_minimum: nil,
       quantity_maximum: 2,
-      note: 'for health')
+      note: 'for health'
+    )
   end
 
   describe 'Relationships' do

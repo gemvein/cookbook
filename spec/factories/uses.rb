@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :use, class: Cookbook::Use do
     use_in { pick_from_models(%w[Recipe HowTo]) }

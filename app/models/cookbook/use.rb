@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Cookbook
+  # Cookbook::Use is basically a linking table with extra information.
   class Use < ApplicationRecord
     # Relationships
     belongs_to :use_in, polymorphic: true
@@ -10,7 +13,6 @@ module Cookbook
 
     # Methods
     def quantity_with_unit
-      "#{quantity} #{unit}"
       [quantity, unit].compact.join(' ')
     end
 

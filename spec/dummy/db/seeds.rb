@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.create_list(:recipe, 5)
 FactoryBot.create_list(:how_to, 5)
 
