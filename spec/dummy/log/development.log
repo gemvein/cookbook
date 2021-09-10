@@ -1065,3 +1065,434 @@ Processing by RecipesController#show as HTML
 Completed 200 OK in 46ms (Views: 40.0ms | ActiveRecord: 3.0ms | Allocations: 9572)
 
 
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (12.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateHowTos (20210909175711)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "how_tos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_how_tos_on_slug" ON "how_tos" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909175711"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateIngredients (20210909181442)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "aisle" varchar, "store" varchar, "cost" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181442"]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSupplies (20210909181455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "supplies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "source" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181455"]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTools (20210909181516)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tools" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "composition" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181516"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRecipes (20210909181533)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "serves" varchar, "meal" varchar, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181533"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUses (20210909185303)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "cookbook_uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_in" ON "cookbook_uses" ("use_in_type", "use_in_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_of" ON "cookbook_uses" ("use_of_type", "use_of_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909185303"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20210910142322)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142322"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142323"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-10 15:43:05.529074"], ["updated_at", "2021-09-10 15:43:05.529074"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateHowTos (20210909175711)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "how_tos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_how_tos_on_slug" ON "how_tos" ("slug")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909175711"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateIngredients (20210909181442)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "aisle" varchar, "store" varchar, "cost" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181442"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSupplies (20210909181455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "supplies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "source" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181455"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTools (20210909181516)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "tools" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "composition" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181516"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRecipes (20210909181533)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "serves" varchar, "meal" varchar, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909181533"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUses (20210909185303)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "cookbook_uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_in" ON "cookbook_uses" ("use_in_type", "use_in_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_of" ON "cookbook_uses" ("use_of_type", "use_of_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210909185303"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20210910142322)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142322"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDeviseToUsers (20210910142323)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210910142323"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-10 15:44:01.573844"], ["updated_at", "2021-09-10 15:44:01.573844"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Quia Est"], ["description", "Eius eligendi soluta. Sapiente laudantium omnis. Quia praesentium deleniti."], ["serves", "3-5 people"], ["meal", "dinner"], ["instructions", "#### Aut\nNihil a cumque. Quis officia ipsa. Odit aperiam commodi.\nveritatis | ipsam | perferendis\n---- | ---- | ----\nquaerat | nihil | velit\nut | enim | dolores"], ["created_at", "2021-09-10 15:44:03.842428"], ["updated_at", "2021-09-10 15:44:03.842428"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Create (0.6ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Quasi Quisquam Et"], ["description", "Nisi sed libero. Quod itaque ea. Sequi velit perferendis."], ["serves", "3-5 people"], ["meal", "dinner"], ["instructions", "### Rerum\nEaque odit quis. Tempora aperiam sit. Rerum repellat asperiores.\n```ruby\nNihil.\n```"], ["created_at", "2021-09-10 15:44:03.859140"], ["updated_at", "2021-09-10 15:44:03.859140"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ipsum Et"], ["description", "Voluptatem omnis nam. Adipisci deserunt in. Adipisci praesentium ipsum."], ["serves", "3-5 people"], ["meal", "dinner"], ["instructions", "###### Doloribus\nLaudantium quisquam qui. Eos ut sunt. Dolores voluptatibus perspiciatis.\n#### Eius\nEt illo rem. Ad quia sed. Eum placeat non.\n## Quibusdam"], ["created_at", "2021-09-10 15:44:03.906228"], ["updated_at", "2021-09-10 15:44:03.906228"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Create (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Non"], ["description", "Eos est qui. Nulla voluptatem aut. Eius fugiat itaque."], ["serves", "3-5 people"], ["meal", "dinner"], ["instructions", "###### Veritatis\nConsequatur est omnis. Corrupti sint sit. Aperiam hic inventore.\n###### Error\nQui maiores consequuntur. Exercitationem laborum non. Fugiat perspiciatis quidem.\n0. Aspernatur. \n1. Quia. \n2. Voluptatem. \n3. Officia. \n4. Sunt. \n5. Dolores. \n"], ["created_at", "2021-09-10 15:44:03.923806"], ["updated_at", "2021-09-10 15:44:03.923806"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRecipe Create (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "description", "serves", "meal", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "A"], ["description", "Nam optio suscipit. Nesciunt reiciendis quibusdam. Omnis vitae expedita."], ["serves", "3-5 people"], ["meal", "dinner"], ["instructions", "##### Quia\nDistinctio veritatis illo. Nobis sapiente omnis. Accusantium iusto quibusdam.\n**Cum** reiciendis accusantium. Corrupti laborum molestiae. Distinctio consequuntur nesciunt."], ["created_at", "2021-09-10 15:44:03.937983"], ["updated_at", "2021-09-10 15:44:03.937983"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHowTo Create (0.4ms)[0m  [1m[32mINSERT INTO "how_tos" ("name", "description", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Qui Deleniti Est"], ["description", "Est rerum perferendis. Rerum officiis explicabo. Qui nostrum molestias."], ["instructions", "## Et\nRatione provident sunt. Occaecati aut provident. Laborum maiores expedita.\n## Distinctio\nEos vel doloribus. Earum aspernatur adipisci. Voluptates eligendi non.\nsed | ratione | doloribus\n---- | ---- | ----\natque | magnam | totam\nsimilique | aut | quae"], ["created_at", "2021-09-10 15:44:03.965481"], ["updated_at", "2021-09-10 15:44:03.965481"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHowTo Create (0.6ms)[0m  [1m[32mINSERT INTO "how_tos" ("name", "description", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Incidunt Eius"], ["description", "Minus sint at. Cum architecto autem. Officiis odio magnam."], ["instructions", "### Illo\nRerum assumenda quod. Eos illo autem. Nostrum et et.\n```ruby\nAliquid.\n```"], ["created_at", "2021-09-10 15:44:03.979973"], ["updated_at", "2021-09-10 15:44:03.979973"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHowTo Create (0.6ms)[0m  [1m[32mINSERT INTO "how_tos" ("name", "description", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Nisi Doloribus Totam"], ["description", "Ratione asperiores nihil. In quisquam nemo. Dolorum voluptas id."], ["instructions", "## Id\nSit sequi accusamus. Aut laborum ea. Delectus necessitatibus totam.\n0. Repudiandae. \n1. Nemo. \n2. Est. \n3. Beatae. \n4. Eos. \n5. Est. \n6. At. \n7. At. \n8. Autem. \n9. Ea. \n"], ["created_at", "2021-09-10 15:44:03.998466"], ["updated_at", "2021-09-10 15:44:03.998466"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHowTo Create (0.5ms)[0m  [1m[32mINSERT INTO "how_tos" ("name", "description", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Culpa"], ["description", "Tempora dolores similique. Fugiat temporibus repellat. Molestias voluptatibus qui."], ["instructions", "#### Et\nNam neque ad. Alias nobis voluptatem. Cumque nisi qui.\n0. Praesentium. \n1. In. \n2. Corrupti. \n"], ["created_at", "2021-09-10 15:44:04.013354"], ["updated_at", "2021-09-10 15:44:04.013354"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHowTo Create (0.5ms)[0m  [1m[32mINSERT INTO "how_tos" ("name", "description", "instructions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ratione"], ["description", "Optio vitae praesentium. Tempora aut velit. Et a similique."], ["instructions", "###### Enim\nMolestias cum dolores. Voluptas vel quasi. Voluptatem exercitationem odit.\nIste est laudantium. Eius et ipsam. Consequatur *libero* eos."], ["created_at", "2021-09-10 15:44:04.027275"], ["updated_at", "2021-09-10 15:44:04.027275"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mIngredient Create (0.4ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Accusamus"], ["description", "Odio rerum non. Aliquam ea incidunt. Ut qui animi."], ["aisle", "Produce"], ["store", "WholeEats"], ["cost", "$1.99"], ["created_at", "2021-09-10 15:44:04.051398"], ["updated_at", "2021-09-10 15:44:04.051398"]]
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mIngredient Create (0.5ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Autem Quae Perferendis"], ["description", "Velit quis rerum. Ut corrupti dolores. Quia porro soluta."], ["aisle", "Produce"], ["store", "WholeEats"], ["cost", "$1.99"], ["created_at", "2021-09-10 15:44:04.068851"], ["updated_at", "2021-09-10 15:44:04.068851"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mIngredient Create (0.6ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Odio Tenetur Aliquid"], ["description", "Ex laborum aut. Placeat est laboriosam. Beatae et perferendis."], ["aisle", "Produce"], ["store", "WholeEats"], ["cost", "$1.99"], ["created_at", "2021-09-10 15:44:04.081021"], ["updated_at", "2021-09-10 15:44:04.081021"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mIngredient Create (0.4ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Molestias Iusto Ex"], ["description", "Soluta voluptatem molestiae. Necessitatibus eos qui. Sapiente maxime sed."], ["aisle", "Produce"], ["store", "WholeEats"], ["cost", "$1.99"], ["created_at", "2021-09-10 15:44:04.093578"], ["updated_at", "2021-09-10 15:44:04.093578"]]
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mIngredient Create (0.3ms)[0m  [1m[32mINSERT INTO "ingredients" ("name", "description", "aisle", "store", "cost", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Voluptas Iure Aliquid"], ["description", "Qui enim dolore. Aut animi quis. Voluptatem numquam quia."], ["aisle", "Produce"], ["store", "WholeEats"], ["cost", "$1.99"], ["created_at", "2021-09-10 15:44:04.108155"], ["updated_at", "2021-09-10 15:44:04.108155"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTool Create (0.4ms)[0m  [1m[32mINSERT INTO "tools" ("name", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ipsum Cupiditate"], ["description", "Et dolorem eum. Excepturi perspiciatis sint. Cum et nesciunt."], ["composition", "cast iron"], ["created_at", "2021-09-10 15:44:04.129163"], ["updated_at", "2021-09-10 15:44:04.129163"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTool Create (0.4ms)[0m  [1m[32mINSERT INTO "tools" ("name", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Culpa Ab Neque"], ["description", "Rem laudantium et. Delectus fuga omnis. Dignissimos odit sequi."], ["composition", "cast iron"], ["created_at", "2021-09-10 15:44:04.141825"], ["updated_at", "2021-09-10 15:44:04.141825"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTool Create (0.4ms)[0m  [1m[32mINSERT INTO "tools" ("name", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Distinctio Et"], ["description", "Voluptas expedita quisquam. Et dignissimos pariatur. Iusto in blanditiis."], ["composition", "cast iron"], ["created_at", "2021-09-10 15:44:04.153556"], ["updated_at", "2021-09-10 15:44:04.153556"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTool Create (0.4ms)[0m  [1m[32mINSERT INTO "tools" ("name", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ut Blanditiis"], ["description", "Suscipit qui consequuntur. Expedita voluptatem voluptatem. Sed corrupti vero."], ["composition", "cast iron"], ["created_at", "2021-09-10 15:44:04.166082"], ["updated_at", "2021-09-10 15:44:04.166082"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTool Create (0.5ms)[0m  [1m[32mINSERT INTO "tools" ("name", "description", "composition", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "In Fugit Nobis"], ["description", "Tempore numquam et. Quia magnam excepturi. Nihil dolorem nulla."], ["composition", "cast iron"], ["created_at", "2021-09-10 15:44:04.179555"], ["updated_at", "2021-09-10 15:44:04.179555"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSupply Create (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Nesciunt"], ["description", "Ea enim quas. Est at alias. Quis repellendus libero."], ["source", "Restaurant Supply Store"], ["created_at", "2021-09-10 15:44:04.201491"], ["updated_at", "2021-09-10 15:44:04.201491"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSupply Create (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Iure Quos Sed"], ["description", "Ipsam magni et. Explicabo aut vel. Laboriosam tempore est."], ["source", "Restaurant Supply Store"], ["created_at", "2021-09-10 15:44:04.212799"], ["updated_at", "2021-09-10 15:44:04.212799"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSupply Create (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Incidunt"], ["description", "Rerum nam in. Necessitatibus voluptatem nisi. Occaecati velit debitis."], ["source", "Restaurant Supply Store"], ["created_at", "2021-09-10 15:44:04.223197"], ["updated_at", "2021-09-10 15:44:04.223197"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSupply Create (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Voluptatem"], ["description", "Voluptatem consectetur omnis. Sed sequi molestias. Et reprehenderit sint."], ["source", "Restaurant Supply Store"], ["created_at", "2021-09-10 15:44:04.232326"], ["updated_at", "2021-09-10 15:44:04.232326"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSupply Create (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "description", "source", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Omnis"], ["description", "Nisi praesentium dolor. Reprehenderit et eos. Aliquid est eum."], ["source", "Restaurant Supply Store"], ["created_at", "2021-09-10 15:44:04.242835"], ["updated_at", "2021-09-10 15:44:04.242835"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.3ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ingredients"."id" FROM "ingredients"[0m
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.3ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 1], ["use_of_type", "Ingredient"], ["use_of_id", 3], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["sort", 1], ["note", "for health"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.279557"], ["updated_at", "2021-09-10 15:44:04.279557"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 5], ["use_of_type", "Tool"], ["use_of_id", 3], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for health"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.300933"], ["updated_at", "2021-09-10 15:44:04.300933"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.6ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 2], ["use_of_type", "Tool"], ["use_of_id", 1], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for wisdom"], ["preparation", "greased"], ["created_at", "2021-09-10 15:44:04.319177"], ["updated_at", "2021-09-10 15:44:04.319177"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 2], ["use_of_type", "Supply"], ["use_of_id", 1], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for health"], ["preparation", "greased"], ["created_at", "2021-09-10 15:44:04.341258"], ["updated_at", "2021-09-10 15:44:04.341258"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 5], ["use_of_type", "Tool"], ["use_of_id", 3], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for fun"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.360333"], ["updated_at", "2021-09-10 15:44:04.360333"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.1ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ingredients"."id" FROM "ingredients"[0m
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 5], ["use_of_type", "Ingredient"], ["use_of_id", 1], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for wisdom"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.377083"], ["updated_at", "2021-09-10 15:44:04.377083"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.3ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 5], ["use_of_type", "Supply"], ["use_of_id", 4], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for wisdom"], ["created_at", "2021-09-10 15:44:04.392299"], ["updated_at", "2021-09-10 15:44:04.392299"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 3], ["use_of_type", "Supply"], ["use_of_id", 2], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for health"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.410316"], ["updated_at", "2021-09-10 15:44:04.410316"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.1ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 1], ["use_of_type", "Tool"], ["use_of_id", 5], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for fun"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.425579"], ["updated_at", "2021-09-10 15:44:04.425579"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 1], ["use_of_type", "Supply"], ["use_of_id", 4], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "pinches"], ["sort", 1], ["note", "for fun"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.443891"], ["updated_at", "2021-09-10 15:44:04.443891"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.3ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 4], ["use_of_type", "Supply"], ["use_of_id", 1], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "pinches"], ["sort", 1], ["note", "for fun"], ["created_at", "2021-09-10 15:44:04.460612"], ["updated_at", "2021-09-10 15:44:04.460612"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.1ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 1], ["use_of_type", "Tool"], ["use_of_id", 5], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for wisdom"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.477122"], ["updated_at", "2021-09-10 15:44:04.477122"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 4], ["use_of_type", "Tool"], ["use_of_id", 5], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for health"], ["created_at", "2021-09-10 15:44:04.493870"], ["updated_at", "2021-09-10 15:44:04.493870"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.1ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 3], ["use_of_type", "Supply"], ["use_of_id", 2], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["sort", 1], ["note", "for health"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.509788"], ["updated_at", "2021-09-10 15:44:04.509788"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.1ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.3ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 5], ["use_of_type", "Tool"], ["use_of_id", 4], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for fun"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.530980"], ["updated_at", "2021-09-10 15:44:04.530980"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.2ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "sort", "note", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 5], ["use_of_type", "Supply"], ["use_of_id", 4], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["sort", 1], ["note", "for wisdom"], ["created_at", "2021-09-10 15:44:04.551430"], ["updated_at", "2021-09-10 15:44:04.551430"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ingredients"."id" FROM "ingredients"[0m
+  [1m[36mIngredient Load (0.1ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 3], ["use_of_type", "Ingredient"], ["use_of_id", 1], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for health"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.568887"], ["updated_at", "2021-09-10 15:44:04.568887"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "how_tos"."id" FROM "how_tos"[0m
+  [1m[36mHowTo Load (0.1ms)[0m  [1m[34mSELECT "how_tos".* FROM "how_tos" WHERE "how_tos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.3ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "HowTo"], ["use_in_id", 4], ["use_of_type", "Tool"], ["use_of_id", 3], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["sort", 1], ["note", "for wisdom"], ["preparation", "greased"], ["created_at", "2021-09-10 15:44:04.589482"], ["updated_at", "2021-09-10 15:44:04.589482"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ingredients"."id" FROM "ingredients"[0m
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 5], ["use_of_type", "Ingredient"], ["use_of_id", 2], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for health"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.607181"], ["updated_at", "2021-09-10 15:44:04.607181"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.6ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 4], ["use_of_type", "Supply"], ["use_of_id", 3], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for wisdom"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.625568"], ["updated_at", "2021-09-10 15:44:04.625568"]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.2ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 4], ["use_of_type", "Supply"], ["use_of_id", 3], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for fun"], ["preparation", "crushed"], ["created_at", "2021-09-10 15:44:04.646264"], ["updated_at", "2021-09-10 15:44:04.646264"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 4], ["use_of_type", "Supply"], ["use_of_id", 4], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for health"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.662407"], ["updated_at", "2021-09-10 15:44:04.662407"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.2ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (5.3ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 1], ["use_of_type", "Tool"], ["use_of_id", 5], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "grams"], ["sort", 1], ["note", "for wisdom"], ["preparation", "greased"], ["created_at", "2021-09-10 15:44:04.680705"], ["updated_at", "2021-09-10 15:44:04.680705"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "tools"."id" FROM "tools"[0m
+  [1m[36mTool Load (0.1ms)[0m  [1m[34mSELECT "tools".* FROM "tools" WHERE "tools"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.5ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "preparation", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 1], ["use_of_type", "Tool"], ["use_of_id", 4], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "cups"], ["sort", 1], ["note", "for health"], ["preparation", "boiled"], ["created_at", "2021-09-10 15:44:04.725638"], ["updated_at", "2021-09-10 15:44:04.725638"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "recipes"."id" FROM "recipes"[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "supplies"."id" FROM "supplies"[0m
+  [1m[36mSupply Load (0.1ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCookbook::Use Create (0.4ms)[0m  [1m[32mINSERT INTO "cookbook_uses" ("use_in_type", "use_in_id", "use_of_type", "use_of_id", "quantity_minimum", "quantity_maximum", "unit", "sort", "note", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["use_in_type", "Recipe"], ["use_in_id", 5], ["use_of_type", "Supply"], ["use_of_id", 2], ["quantity_minimum", 1.5], ["quantity_maximum", 3.0], ["unit", "pinches"], ["sort", 1], ["note", "for fun"], ["created_at", "2021-09-10 15:44:04.741047"], ["updated_at", "2021-09-10 15:44:04.741047"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "cookbook_uses"[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "cookbook_uses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "published" boolean DEFAULT 1, "use_in_type" varchar NOT NULL, "use_in_id" integer NOT NULL, "use_of_type" varchar NOT NULL, "use_of_id" integer NOT NULL, "quantity_minimum" float, "quantity_maximum" float, "unit" varchar, "sort" integer, "note" varchar, "preparation" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_in" ON "cookbook_uses" ("use_in_type", "use_in_id")[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE INDEX "index_cookbook_uses_on_use_of" ON "cookbook_uses" ("use_of_type", "use_of_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "how_tos"[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "how_tos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "slug" varchar, "description" text, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_how_tos_on_slug" ON "how_tos" ("slug")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "ingredients"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "aisle" varchar, "store" varchar, "cost" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes"[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "serves" varchar, "meal" varchar, "instructions" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "supplies"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "supplies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "source" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tools"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "tools" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "composition" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210910142323)[0m
+  [1m[35m (5.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210909175711),
+(20210909181442),
+(20210909181455),
+(20210909181516),
+(20210909181533),
+(20210909185303),
+(20210910142322);
+
+[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-10 15:44:04.905114"], ["updated_at", "2021-09-10 15:44:04.905114"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-09-10 15:44:04.918300"], ["key", "environment"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "e566f0a117600660d6da09639340fcb3cc07b691"], ["created_at", "2021-09-10 15:44:04.930586"], ["updated_at", "2021-09-10 15:44:04.930586"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m

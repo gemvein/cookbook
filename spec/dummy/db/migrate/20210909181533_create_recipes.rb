@@ -5,7 +5,6 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
   def change
     create_table :recipes do |t|
       t.string :name
-      t.string :slug
       t.text :description
       t.string :serves
       t.string :meal
@@ -13,6 +12,5 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :recipes, :slug, unique: true
   end
 end
