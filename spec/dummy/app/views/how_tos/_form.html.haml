@@ -1,22 +1,6 @@
-= form_for @how_to do |f|
-  - if @how_to.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@how_to.errors.count, "error")} prohibited this how_to from being saved:"
-      %ul
-        - @how_to.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :slug
-    = f.text_field :slug
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :instructions
-    = f.text_area :instructions
-  .actions
-    = f.submit 'Save'
+-# frozen_string_literal: true
+= simple_form_for(@how_to, url: (@how_to.new_record? ? how_tos_path : how_to_path(@how_to.id))) do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :instructions
+  .actions= f.button :submit, class: 'button-large button-action'

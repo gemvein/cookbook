@@ -1,0 +1,6 @@
+-# frozen_string_literal: true
+= simple_form_for(@<%= singular_table_name %>, url: (@<%= singular_table_name %>.new_record? ? <%= singular_table_name %>s_path : <%= singular_table_name %>_path(@<%= singular_table_name %>.id))) do |f|
+<%- attributes.each do |attribute| -%>
+  = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+<%- end -%>
+  .actions= f.button :submit, class: 'button-large button-action'

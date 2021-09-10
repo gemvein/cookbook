@@ -1,22 +1,6 @@
-= form_for @supply do |f|
-  - if @supply.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@supply.errors.count, "error")} prohibited this supply from being saved:"
-      %ul
-        - @supply.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :slug
-    = f.text_field :slug
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :source
-    = f.text_field :source
-  .actions
-    = f.submit 'Save'
+-# frozen_string_literal: true
+= simple_form_for(@supply, url: (@supply.new_record? ? ingredients_path : ingredient_path(@supply.id))) do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :source
+  .actions= f.button :submit, class: 'button-large button-action'

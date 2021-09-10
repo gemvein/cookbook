@@ -1,28 +1,8 @@
-= form_for @ingredient do |f|
-  - if @ingredient.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ingredient.errors.count, "error")} prohibited this ingredient from being saved:"
-      %ul
-        - @ingredient.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :slug
-    = f.text_field :slug
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :aisle
-    = f.text_field :aisle
-  .field
-    = f.label :store
-    = f.text_field :store
-  .field
-    = f.label :cost
-    = f.text_field :cost
-  .actions
-    = f.submit 'Save'
+-# frozen_string_literal: true
+= simple_form_for(@ingredient, url: (@ingredient.new_record? ? ingredients_path : ingredient_path(@ingredient.id))) do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :aisle
+  = f.input :store
+  = f.input :cost
+  .actions= f.button :submit, class: 'button-large button-action'
