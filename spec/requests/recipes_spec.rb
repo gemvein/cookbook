@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/ModuleLength
 module Cookbook
   RSpec.describe '/recipes', type: :request do
     include Engine.routes.url_helpers
@@ -115,4 +114,3 @@ module Cookbook
     end
   end
 end
-# rubocop:enable Metrics/ModuleLength

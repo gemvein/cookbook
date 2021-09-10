@@ -20,8 +20,7 @@ module Cookbook
 
       # Extended by acts_as_used_in mixin
       module ClassMethods
-        attr_accessor(:uses_of)
-        attr_accessor(:label_method)
+        attr_accessor :uses_of, :label_method
 
         def associate_uses_of
           uses_of.each do |table_sym|

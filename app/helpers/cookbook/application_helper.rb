@@ -15,8 +15,6 @@ module Cookbook
       render 'cookbook/fields', form: form, usables: build_usables(form.object)
     end
 
-
-
     private
 
     def build_usables(object)
