@@ -2,6 +2,7 @@
 
 # Controller for HowTos, like "How to build a dog house"
 class HowTosController < ApplicationController
+  include Cookbook::Params
   before_action :set_how_to, only: %i[show edit update destroy]
 
   # GET /how_tos
@@ -55,6 +56,6 @@ class HowTosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def how_to_params
-    params.require(:how_to).permit(:name, :slug, :description, :instructions)
+    params.require(:how_to).permit(:name, :description, :instructions, cookbook_params('HowTo'))
   end
 end

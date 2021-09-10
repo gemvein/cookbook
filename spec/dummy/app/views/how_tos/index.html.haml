@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Name
-      %th Slug
       %th Description
       %th Instructions
       %th
@@ -15,7 +14,6 @@
     - @how_tos.each do |how_to|
       %tr
         %td= how_to.name
-        %td= how_to.slug
         %td= how_to.description
         %td= how_to.instructions
         %td= link_to 'Show', how_to

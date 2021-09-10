@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Name
-      %th Slug
       %th Description
       %th Serves
       %th Meal
@@ -17,7 +16,6 @@
     - @recipes.each do |recipe|
       %tr
         %td= recipe.name
-        %td= recipe.slug
         %td= recipe.description
         %td= recipe.serves
         %td= recipe.meal

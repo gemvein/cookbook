@@ -1,5 +1,5 @@
 -# frozen_string_literal: true
-= simple_form_for(@tool, url: (@tool.new_record? ? ingredients_path : ingredient_path(@tool.id))) do |f|
+= simple_form_for(@tool, url: (@tool.new_record? ? tools_path : tool_path(@tool.id))) do |f|
   = f.input :name
   = f.input :description
   = f.input :composition

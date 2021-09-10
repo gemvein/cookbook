@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Name
-      %th Slug
       %th Description
       %th Aisle
       %th Store
@@ -17,7 +16,6 @@
     - @ingredients.each do |ingredient|
       %tr
         %td= ingredient.name
-        %td= ingredient.slug
         %td= ingredient.description
         %td= ingredient.aisle
         %td= ingredient.store

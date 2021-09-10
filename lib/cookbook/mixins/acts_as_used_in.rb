@@ -11,6 +11,7 @@ module Cookbook
         include InstanceMethods
 
         self.uses_of = model_symbols
+        self.label_method = :name
 
         # Relationships
         has_many :uses, as: :use_of, class_name: 'Cookbook::Use'
@@ -20,6 +21,7 @@ module Cookbook
       # Extended by acts_as_used_in mixin
       module ClassMethods
         attr_accessor(:uses_of)
+        attr_accessor(:label_method)
 
         def associate_uses_of
           uses_of.each do |table_sym|

@@ -1,5 +1,5 @@
 -# frozen_string_literal: true
-= simple_form_for(@supply, url: (@supply.new_record? ? ingredients_path : ingredient_path(@supply.id))) do |f|
+= simple_form_for(@supply, url: (@supply.new_record? ? supplys_path : supply_path(@supply.id))) do |f|
   = f.input :name
   = f.input :description
   = f.input :source

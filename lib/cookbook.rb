@@ -18,10 +18,10 @@ module Cookbook
 
   require 'haml-rails'
   require 'sass-rails'
-  require 'vanilla_nested'
-  require 'cancancan'
   require 'simple_form'
+  require 'vanilla_nested'
   require 'kaminari'
+  require 'cancancan' if Cookbook.configuration.authorize_with == :cancancan
 end
 
 ActiveRecord::Base.extend Cookbook::Mixins::ActsAsUsedIn

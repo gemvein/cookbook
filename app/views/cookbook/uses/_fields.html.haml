@@ -1,0 +1,17 @@
+:ruby
+  table_sym = form.object_name.gsub(/[^\[]+\[([^\]]+)_uses_attributes\].*/, "\\1").pluralize
+  model = table_sym.to_s.classify.constantize
+  collection = if Cookbook.configuration.authorize_with == :cancancan
+                 model.accessible_by(current_ability, :select)
+               else
+                 model.all
+               end
+= form.hidden_field :use_of_type, value: model.model_name.to_s
+= form.input :use_of_id, collection: collection, as: :select, label_method: model.label_method, value_method: :id, selected: form.object.use_of_id, include_blank: "Select #{model.model_name.human}"
+= form.input :quantity_minimum
+= form.input :quantity_maximum
+= form.input :unit
+= form.input :sort
+= form.input :preparation, hint: 'like "crushed" or "greased"'
+= form.input :note, hint: 'like "to taste"'
+= link_to_remove_nested(form, link_classes: 'button button-danger')

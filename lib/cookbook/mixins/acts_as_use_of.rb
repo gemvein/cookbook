@@ -25,10 +25,13 @@ module Cookbook
           used_in.each do |table_sym|
             model = table_sym.to_s.classify.constantize
             name = model.model_name.to_s
+            uses_symbol = "#{model.model_name.param_key}_uses".to_sym
 
-            has_many "#{model.model_name.param_key}_uses".to_sym, lambda {
+            has_many uses_symbol, lambda {
               where(use_of_type: name)
             }, as: :use_in, class_name: 'Cookbook::Use'
+            accepts_nested_attributes_for uses_symbol, reject_if: :all_blank, allow_destroy: true
+
             has_many table_sym, through: :uses, source: :use_of, source_type: name
           end
         end

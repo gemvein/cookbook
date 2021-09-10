@@ -2,6 +2,7 @@
 
 # Controller for Recipes, like "Caprese Salad"
 class RecipesController < ApplicationController
+  include Cookbook::Params
   before_action :set_recipe, only: %i[show edit update destroy]
 
   # GET /recipes
@@ -55,6 +56,6 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :slug, :description, :serves, :meal, :instructions)
+    params.require(:recipe).permit(:name, :description, :serves, :meal, :instructions, cookbook_params('Recipe'))
   end
 end

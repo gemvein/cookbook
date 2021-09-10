@@ -71,6 +71,27 @@ Add the helpers to the relevant views
 = cookbook_used_in @recipe
 ```
 
+Add the fields to your instructional forms (e.g. Recipes)
+
+```haml
+= form_for(@recipe) do |f|
+  = cookbook_fields f
+```
+
+Don't forget to add the controller concern to enable nested attributes with strong parameters
+
+```ruby
+class RecipesController < ApplicationController
+  include Cookbook::Params
+
+  #...
+    
+  def recipe_params
+    params.require(:recipe).permit(:name, :description, :serves, :meal, :instructions, cookbook_params('Recipe'))
+  end
+end
+```
+
 ## Contributing
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.

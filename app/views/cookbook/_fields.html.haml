@@ -1,0 +1,11 @@
+= javascript_include_tag 'vanilla_nested'
+- if Cookbook.configuration.include_cookbook_css == true
+  = stylesheet_link_tag 'cookbook/application'
+- usables.each do |usable|
+  %fieldset.used_in{class: usable.plural_class}
+    %legend
+      %h3= usable.title
+    = link_to_add_nested form, usable.uses_sym, "##{usable.plural_class}", partial: 'cookbook/uses/fields', link_text: "Add #{usable.singular_title}", link_classes: 'button button-action'
+    %div{id: usable.plural_class}
+      = form.fields_for usable.uses_sym do |g|
+        = render 'cookbook/uses/fields', form: g, usable: usable

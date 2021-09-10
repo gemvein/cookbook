@@ -1,0 +1,180 @@
+$danger-color: darkred;
+
+$button-color: darkgray;
+$button-text-color: white;
+$button-link-color: darkslateblue;
+$button-link-text-color: white;
+$button-action-color: darkolivegreen;
+$button-action-text-color: white;
+$button-danger-color: darkred;
+$button-danger-text-color: white;
+
+$table-border-color: darkgray;
+$fieldset-border-color: darkgray;
+$hr-border-color: darkgray;
+
+$shadow-color: rgba(darkgray, 0.5);
+
+.button, button, input[type=button], input[type=submit], .item-actions li a {
+  background: $button-color;
+  color: $button-text-color;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.33rem;
+  border: 1px lighten($button-color, 20%) outset;
+  box-shadow: 2px 2px 2px $shadow-color;
+  display: inline-block;
+
+  &:active {
+    border-style: inset;
+    box-shadow: 1px 1px 2px rgba($shadow-color, 0.5);
+  }
+
+  &.button-link {
+    background-color: $button-link-color;
+    border-color: lighten($button-link-color, 20%);
+    color: $button-link-text-color;
+
+    &:active {
+      background: darken($button-link-color, 20%);
+    }
+  }
+
+  &.button-action {
+    background-color: $button-action-color;
+    border-color: lighten($button-action-color, 20%);
+    color: $button-action-text-color;
+
+    &:active {
+      background: darken($button-action-color, 20%);
+    }
+  }
+
+  &.button-danger {
+    background-color: $button-danger-color;
+    border-color: lighten($button-danger-color, 10%);
+    color: $button-danger-text-color;
+
+    &:active {
+      background: darken($button-danger-color, 20%);
+    }
+  }
+
+  &.button-large {
+    font-size: 1.5rem;
+  }
+
+  &:active,
+  &:visited,
+  &:link,
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.button-block {
+    display: block;
+    text-align: center;
+  }
+}
+
+table.table-data {
+  border-collapse: collapse;
+  border: solid 1px $table-border-color;
+
+  td, th {
+    border: solid 1px $table-border-color;
+    padding: 0.5rem;
+  }
+}
+
+.error {
+  font-weight: bold;
+  color: $danger-color;
+}
+
+.field_with_errors input, .field_with_errors select, .field_with_errors textarea {
+  border: 1px solid $danger-color;
+  box-shadow: 1px 1px 4px $danger-color;
+}
+
+.required abbr[title=required] {
+  font-weight: bold;
+  color: $danger-color;
+}
+
+.input, .actions {
+  display: grid;
+  grid-template-columns: 15rem 2fr 1fr;
+  grid-gap: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 60rem) {
+    grid-template-columns: 10rem 1fr;
+  }
+
+  &.input-sort input {
+    width: 3rem;
+  }
+
+  label {
+    text-align: right;
+  }
+
+  input[type=text],
+  input[type=number],
+  input[type=password],
+  input[type=url],
+  input[type=email],
+  select,
+  textarea {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  input[type=text],
+  input[type=number],
+  input[type=password],
+  input[type=url],
+  input[type=email] {
+    height: 1.5rem;
+  }
+}
+
+label.checkbox {
+  display: flex;
+  justify-content: flex-start;
+  grid-column-start: 2;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  grid-column-start: 2;
+}
+
+.radio-wrapper, .checkbox-wrapper {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  grid-column-gap: 0.5rem;
+
+  label {
+    text-align: left;
+  }
+}
+
+textarea {
+  padding: 0.5rem;
+}
+
+fieldset {
+  border: solid 1px $fieldset-border-color;
+  margin: 1rem 10rem;
+
+  fieldset {
+    margin: 0 5rem;
+  }
+}
+
+.preview-html {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}

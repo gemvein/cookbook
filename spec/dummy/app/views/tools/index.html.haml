@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Name
-      %th Slug
       %th Description
       %th Composition
       %th
@@ -15,7 +14,6 @@
     - @tools.each do |tool|
       %tr
         %td= tool.name
-        %td= tool.slug
         %td= tool.description
         %td= tool.composition
         %td= link_to 'Show', tool

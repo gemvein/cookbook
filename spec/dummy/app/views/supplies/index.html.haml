@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Name
-      %th Slug
       %th Description
       %th Source
       %th
@@ -15,7 +14,6 @@
     - @supplies.each do |supply|
       %tr
         %td= supply.name
-        %td= supply.slug
         %td= supply.description
         %td= supply.source
         %td= link_to 'Show', supply

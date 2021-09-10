@@ -16,11 +16,13 @@ module Cookbook
   # Cookbook Configuration
   class Configuration
     attr_accessor(
-      :variable
+      :include_cookbook_css,
+      :authorize_with
     )
 
     def initialize
-      self.variable = []
+      self.include_cookbook_css = false
+      self.authorize_with = nil
     end
   end
 end
