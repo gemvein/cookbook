@@ -1,4 +1,5 @@
 .idea
+spec/dummy/tmp
 
 # rcov generated
 coverage
