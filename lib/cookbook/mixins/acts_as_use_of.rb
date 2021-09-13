@@ -15,19 +15,6 @@ module Cookbook
         # Relationships
         has_many :uses, as: :use_in, class_name: 'Cookbook::Use'
         associate_used_in
-
-        if defined?(RailsAdmin)
-          rails_admin do
-            field :uses do
-              visible false
-            end
-            used_in.each do |table_sym|
-              field table_sym do # We don't want these associations to show
-                visible false
-              end
-            end
-          end
-        end
       end
 
       # Extended by has_cookbook mixin
@@ -35,7 +22,8 @@ module Cookbook
         attr_accessor(:used_in)
 
         def associate_used_in
-          used_in.each do |table_sym|
+          tables = used_in
+          tables.each do |table_sym|
             model = table_sym.to_s.classify.constantize
             name = model.model_name.to_s
             uses_symbol = "#{model.model_name.param_key}_uses".to_sym
@@ -46,6 +34,19 @@ module Cookbook
             accepts_nested_attributes_for uses_symbol, reject_if: :all_blank, allow_destroy: true
 
             has_many table_sym, through: :uses, source: :use_of, source_type: name
+
+            if defined?(RailsAdmin)
+              rails_admin do
+                field :uses do
+                  visible false
+                end
+                tables.each do |table_sym|
+                  field table_sym do # We don't want these associations to show
+                    visible false
+                  end
+                end
+              end
+            end
           end
         end
       end
