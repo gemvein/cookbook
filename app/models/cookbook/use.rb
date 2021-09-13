@@ -22,5 +22,11 @@ module Cookbook
 
       [min, max].compact.join('–') # ndash, not hyphen
     end
+
+    if defined?(RailsAdmin)
+      rails_admin do
+        visible false
+      end
+    end
   end
 end
