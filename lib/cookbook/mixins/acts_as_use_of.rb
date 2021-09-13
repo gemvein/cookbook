@@ -15,6 +15,19 @@ module Cookbook
         # Relationships
         has_many :uses, as: :use_in, class_name: 'Cookbook::Use'
         associate_used_in
+
+        if defined?(RailsAdmin)
+          rails_admin do
+            field :uses do
+              visible false
+            end
+            used_in.each do |table_sym|
+              field table_sym do # We don't want these associations to show
+                visible false
+              end
+            end
+          end
+        end
       end
 
       # Extended by has_cookbook mixin
