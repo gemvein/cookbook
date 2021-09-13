@@ -26,6 +26,12 @@ module Cookbook
     if defined?(RailsAdmin)
       rails_admin do
         visible false
+        edit do
+          include_all_fields
+          field :use_in do
+            visible false
+          end
+        end
       end
     end
   end
