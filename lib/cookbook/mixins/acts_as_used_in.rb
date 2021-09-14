@@ -10,20 +10,37 @@ module Cookbook
         extend ClassMethods
         include InstanceMethods
 
-        self.uses_of = model_symbols
+        tables = model_symbols
         self.label_method = :name
 
         # Relationships
         has_many :uses, as: :use_of, class_name: 'Cookbook::Use'
-        associate_uses_of
+        associate_uses_of(tables)
+
+        if defined?(RailsAdmin)
+          rails_admin do
+            field :uses do
+              visible false
+            end
+            tables.each do |table_sym| # We don't want these associations to show
+              table_uses_sym = "#{table_sym.to_s.singularize}_uses".to_sym
+              field table_uses_sym do
+                visible false
+              end
+              field table_sym do
+                visible false
+              end
+            end
+          end
+        end
       end
 
       # Extended by acts_as_used_in mixin
       module ClassMethods
-        attr_accessor :uses_of, :label_method
+        attr_accessor :label_method
 
-        def associate_uses_of
-          uses_of.each do |table_sym|
+        def associate_uses_of(tables)
+          tables.each do |table_sym|
             model = table_sym.to_s.classify.constantize
             name = model.model_name.to_s
 
