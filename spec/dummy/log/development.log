@@ -6641,3 +6641,15 @@ Processing by HowTosController#show as HTML
 Completed 200 OK in 30ms (Views: 26.2ms | ActiveRecord: 1.5ms | Allocations: 10394)
 
 
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? /* loading for inspect */ LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["LIMIT", 11]]
+  [1m[36mCookbook::Use Load (0.5ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? ORDER BY "cookbook_uses"."id" ASC LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.2ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? ORDER BY "cookbook_uses"."id" ASC LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRecipe Load (0.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" ORDER BY "recipes"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCookbook::Use Load (0.3ms)[0m  [1m[34mSELECT "cookbook_uses".* FROM "cookbook_uses" WHERE "cookbook_uses"."use_in_id" = ? AND "cookbook_uses"."use_in_type" = ? ORDER BY "cookbook_uses"."id" ASC LIMIT ?[0m  [["use_in_id", 1], ["use_in_type", "Recipe"], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mIngredient Load (0.2ms)[0m  [1m[34mSELECT "ingredients".* FROM "ingredients" WHERE "ingredients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]

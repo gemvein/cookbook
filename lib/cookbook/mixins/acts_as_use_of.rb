@@ -37,10 +37,18 @@ module Cookbook
 
             if defined?(RailsAdmin)
               rails_admin do
+                include_all_fields
                 field :uses do
                   visible false
                 end
                 tables.each do |table_sym|
+                  singular = table_sym.to_s.singularize
+                  uses_symbol = "#{singular}_uses".to_sym
+                  field uses_symbol do
+                    visible do
+                      !bindings[:object].new_record?
+                    end
+                  end
                   field table_sym do # We don't want these associations to show
                     visible false
                   end

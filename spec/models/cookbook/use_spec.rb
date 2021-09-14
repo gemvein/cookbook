@@ -42,17 +42,6 @@ RSpec.describe Cookbook::Use, type: :model do
     it { should belong_to(:use_in) }
   end
 
-  describe 'Scopes' do
-    describe '.recipe_uses' do
-      subject { Cookbook::Use.recipe_uses }
-      it { should include(full_use) }
-    end
-    describe '.ingredient_uses' do
-      subject { Cookbook::Use.ingredient_uses }
-      it { should include(full_use) }
-    end
-  end
-
   describe 'Methods' do
     describe '#quantity' do
       describe 'when min and max exist' do
@@ -61,11 +50,11 @@ RSpec.describe Cookbook::Use, type: :model do
       end
       describe 'with just min' do
         subject { use_no_max_no_unit.quantity }
-        it { should eq '0.25' } # ndash, not hyphen
+        it { should eq '0.25' }
       end
       describe 'with just max' do
         subject { use_no_min_no_unit.quantity }
-        it { should eq '2' } # ndash, not hyphen
+        it { should eq '2' }
       end
     end
     describe '#quantity and unit' do
