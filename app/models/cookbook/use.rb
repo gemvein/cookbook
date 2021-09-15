@@ -47,11 +47,17 @@ module Cookbook
         visible false
         object_label_method { :object_label }
         edit do
-          field :use_in, :hidden do
-            formatted_value do
-              bindings[:object].use_in
+          field :use_in do
+            visible false
+          end
+          field :use_in_type, :text do
+            def value
+              bindings[:object].use_in_type
             end
           end
+          # field :use_in_id, :hidden do
+          #   formatted_value { bindings[:object].use_in_id }
+          # end
           include_all_fields
         end
       end
