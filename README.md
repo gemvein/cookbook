@@ -3,8 +3,6 @@ Works Cited allows you to add a list of the works cited in ActiveRecord objects,
 
 Works Cited can be configured to use CanCanCan to authorize the editing of citations. This makes it easy for you to control access.
 
-Works Cited does not require, but is compatible with Rails Admin.
-
 ## Installation
 Add this line to your application's Gemfile:
 

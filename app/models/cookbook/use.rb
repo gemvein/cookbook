@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pp'
 
 module Cookbook
   # Cookbook::Use is basically a linking table with extra information.
@@ -13,13 +14,13 @@ module Cookbook
       def add_use_of(table_sym)
         singular = table_sym.to_s.singularize
         model_name = singular.classify.constantize.to_s
-        belongs_to singular.to_sym, class_name: model_name, foreign_key: :use_in_id, inverse_of: "#{singular}_uses".to_sym, optional: true
+        belongs_to singular.to_sym, class_name: model_name, foreign_key: :use_of_id, inverse_of: :uses, optional: true
       end
 
       def add_use_in(table_sym)
         singular = table_sym.to_s.singularize
         model_name = singular.classify.constantize.to_s
-        belongs_to singular.to_sym, class_name: model_name, foreign_key: :use_of_id, inverse_of: "#{singular}_uses".to_sym, optional: true
+        belongs_to singular.to_sym, class_name: model_name, foreign_key: :use_in_id, inverse_of: :uses, optional: true
       end
     end
 
@@ -47,14 +48,6 @@ module Cookbook
         visible false
         object_label_method { :object_label }
         edit do
-          field :use_in_type, :text do
-            formatted_value do
-              bindings[:object].use_of.inspect
-            end
-          end
-          # field :use_in_id, :hidden do
-          #   formatted_value { bindings[:object].use_in_id }
-          # end
           include_all_fields
         end
       end
