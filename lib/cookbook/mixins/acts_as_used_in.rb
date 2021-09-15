@@ -12,6 +12,7 @@ module Cookbook
 
         tables = model_symbols
         self.label_method = :name
+        Cookbook::Use.add_use_of(table_name.to_sym)
 
         # Relationships
         has_many :uses, as: :use_of, class_name: 'Cookbook::Use'

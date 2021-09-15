@@ -44,9 +44,13 @@ module Cookbook
 
     if defined?(RailsAdmin)
       rails_admin do
+        abort bindings[:object].inspect
         visible false
         object_label_method { :object_label }
         edit do
+          field :use_in do
+            visible false
+          end
           include_all_fields
         end
       end
