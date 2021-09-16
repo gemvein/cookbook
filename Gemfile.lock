@@ -155,18 +155,6 @@ GEM
       rdoc
       semver
     jwt (2.2.3)
-    kaminari (1.2.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.1)
-      kaminari-activerecord (= 1.2.1)
-      kaminari-core (= 1.2.1)
-    kaminari-actionview (1.2.1)
-      actionview
-      kaminari-core (= 1.2.1)
-    kaminari-activerecord (1.2.1)
-      activerecord
-      kaminari-core (= 1.2.1)
-    kaminari-core (1.2.1)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -347,7 +335,6 @@ DEPENDENCIES
   faker
   haml-rails (>= 2.0, < 3)
   juwelier (~> 2.1.0)
-  kaminari (>= 1.2.1, < 2)
   puma (>= 4.3, < 5)
   rails (>= 6, < 7)
   rspec-html-matchers
@@ -355,7 +342,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  sass-rails (>= 6, < 7)
+  sass-rails (>= 5, < 7)
   shoulda
   shoulda-matchers (>= 4.3, < 5)
   simple_form (>= 5.1, < 6)
