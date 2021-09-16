@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '>= 6', '< 7'
 
 gem 'haml-rails', '>= 2.0', '< 3'
-gem 'sass-rails', '>= 6', '< 7'
+gem 'sass-rails', '>= 5', '< 7'
 
 gem 'cancancan', '>= 3.3', '< 4'
 
