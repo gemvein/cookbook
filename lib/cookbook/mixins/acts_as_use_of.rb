@@ -15,7 +15,23 @@ module Cookbook
 
         # Relationships
         has_many :uses, as: :use_in, class_name: 'Cookbook::Use', inverse_of: :use_in
+        accepts_nested_attributes_for :uses, reject_if: :all_blank, allow_destroy: true
         associate_used_in
+
+        used_in.each do |table_sym|
+          singular = table_sym.to_s.singularize
+          model = singular.classify.constantize
+          equals_method_symbol = "#{singular}_uses_attributes=".to_sym
+          define_method(equals_method_symbol) do |values|
+            items = []
+            values.each_pair do |key, value|
+              value['use_in'] = self
+              value['use_of'] = model.find_by(id: value['use_of_id'])
+              items << value
+            end
+            self.uses_attributes = items
+          end
+        end
       end
 
       # Extended by has_cookbook mixin
