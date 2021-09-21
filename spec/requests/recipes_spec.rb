@@ -71,13 +71,13 @@ module Cookbook
       let(:new_attributes) do
         {
           name: 'Foo',
-          ingredient_uses_attributes: [
-            {
+          ingredient_uses_attributes: {
+            0 => {
               use_of_id: ingredient.id,
               use_of_type: 'Ingredient',
               note: 'Test Note'
             }
-          ]
+          }
         }
       end
       context 'with valid parameters' do

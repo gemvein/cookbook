@@ -15,6 +15,7 @@ module Cookbook
 
         # Relationships
         has_many :uses, as: :use_in, class_name: 'Cookbook::Use', inverse_of: :use_in
+        # Used only as a setter, not a getter
         accepts_nested_attributes_for :uses, reject_if: :all_blank, allow_destroy: true
         associate_used_in
 
@@ -49,6 +50,8 @@ module Cookbook
             has_many uses_symbol, lambda {
               where(use_of_type: name)
             }, as: :use_in, class_name: 'Cookbook::Use', inverse_of: singular_symbol
+
+            # Used only as a getter, not a setter
             accepts_nested_attributes_for uses_symbol, reject_if: :all_blank, allow_destroy: true
 
             has_many table_sym, through: uses_symbol, source: :use_of, source_type: name

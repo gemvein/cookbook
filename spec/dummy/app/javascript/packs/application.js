@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require cookbook
+//= require ../../../../../app/assets/javascripts/cookbook
 //= require_tree .

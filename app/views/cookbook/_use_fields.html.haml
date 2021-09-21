@@ -1,0 +1,22 @@
+%fieldset.nested-fields
+  :ruby
+    table_sym = f.object_name.gsub(/[^\[]+\[([^\]]+)_uses_attributes\].*/, "\\1").pluralize
+    model = table_sym.to_s.classify.constantize
+    collection = if Cookbook.configuration.authorize_with == :cancancan
+                   model.accessible_by(current_ability, :select)
+                 else
+                   model.all
+                 end
+  %legend
+    %h4
+      = model.model_name.human
+  = f.hidden_field :_destroy
+  = f.hidden_field :use_of_type, value: model.model_name.to_s
+  = f.input :use_of_id, collection: collection, as: :select, label_method: model.label_method, value_method: :id, selected: f.object.use_of_id, include_blank: "Select #{model.model_name.human}"
+  = f.input :quantity_minimum
+  = f.input :quantity_maximum
+  = f.input :unit
+  = f.input :sort
+  = f.input :preparation, hint: 'like "crushed" or "greased"'
+  = f.input :note, hint: 'like "to taste"'
+  = link_to "Remove", '#', class: 'remove_fields button button-danger'

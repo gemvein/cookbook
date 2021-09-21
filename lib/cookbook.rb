@@ -19,7 +19,6 @@ module Cookbook
   require 'haml-rails'
   require 'sass-rails'
   require 'simple_form'
-  require 'vanilla_nested'
   require 'cancancan' if Cookbook.configuration.authorize_with == :cancancan
 end
 
